@@ -1,25 +1,26 @@
-<%= form_for(@lead) do |f| %>
-  <% if @lead.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@lead.errors.count, "error") %> prohibited this lead from being saved:</h2>
-
-      <ul>
-      <% @lead.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for(@lead, :html => {:class => "form-inline"}) do |f| %>
+  <div class="hero-unit">
+    <div class="row lead">
+      <p>Si te interesa la aplicación y quieres estar al tanto de su evolución hasta su lanzamiento, por favor, déjanos tu nombre y tu dirección de correo.</p>
+      <h6 class="muted">Sólo usaremos tu correo para informarte sobre Metirium. Para nada más.</h6>
+    </div>    
+  
+    <div class="row">
+      <%= f.text_field :name, :class => "span4", :placeholder => "Nombre" %>
+      <%= f.text_field :email, :class => "span5", :placeholder => "Correo electrónico"%>
+      <%= f.submit "Enviar", :class => "btn span2 btn-primary" %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <% if @lead.errors.any? %>
+      <div class="row alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>!Vaya¡</strong> Se ha producido un error
+        <ul>
+          <% @lead.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   </div>
 <% end %>

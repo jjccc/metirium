@@ -5,3 +5,24 @@
  *= require_self
  *= require_tree . 
 */
+
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.lorempixel1 {
+  background-image: url('http://lorempixel.com/940/280/city');
+}
+.lorempixel2 {
+  background-image: url('http://lorempixel.com/940/280/business');
+}
+.lorempixel3 {
+  background-image: url('http://lorempixel.com/940/280/nature');
+}
+.lorempixel4 {
+  background-image: url('http://lorempixel.com/940/280/abstract');
+}
+.landing-margin {
+  margin-left: 20px;
+}

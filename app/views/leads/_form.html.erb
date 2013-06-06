@@ -2,12 +2,12 @@
   <div class="hero-unit">
     <div class="row lead">
       <p>Si te interesa la aplicación y quieres estar al tanto de su evolución hasta su lanzamiento, por favor, déjanos tu nombre y tu dirección de correo.</p>
-      <h6 class="muted">Sólo usaremos tu correo para informarte sobre Metirium. Para nada más.</h6>
+      <h6 class="muted">Sólo usaremos tu correo para informarte sobre las novedades de Metirium.</h6>
     </div>    
   
     <div class="row">
-      <%= f.text_field :name, :class => "span4", :maxlength => 150, :placeholder => "Nombre" %>
-      <%= f.text_field :email, :class => "span5", :maxlength => 250, :placeholder => "Correo electrónico"%>
+      <%= f.text_field :name, :class => "span4", :maxlength => 150, :placeholder => "Nombre (obligatorio)" %>
+      <%= f.text_field :email, :class => "span5", :maxlength => 250, :placeholder => "Correo electrónico (obligatorio)"%>
       <%= f.submit "Enviar", :class => "btn span2 btn-primary" %>
     </div>
 

@@ -11,18 +11,19 @@ body {
   padding-bottom: 40px;
 }
 
-.lorempixel1 {
-  background-image: url('http://lorempixel.com/940/280/city');
+.landing-slider-1 {
+  background-image: url('landing/1.jpg');
 }
-.lorempixel2 {
-  background-image: url('http://lorempixel.com/940/280/business');
+.landing-slider-2 {
+  background-image: url('landing/2.jpg');
 }
-.lorempixel3 {
-  background-image: url('http://lorempixel.com/940/280/nature');
+.landing-slider-3 {
+  background-image: url('landing/3.jpg');
 }
-.lorempixel4 {
-  background-image: url('http://lorempixel.com/940/280/abstract');
+.landing-slider-4 {
+  background-image: url('landing/4.jpg');
 }
 .landing-margin {
   margin-left: 20px;
+  color: #FFFFFF !important;
 }

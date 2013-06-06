@@ -27,3 +27,8 @@ body {
   margin-left: 20px;
   color: #FFFFFF !important;
 }
+
+.alert-margin {
+  margin-top: 20px;
+}
+

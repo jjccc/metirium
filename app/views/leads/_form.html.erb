@@ -12,12 +12,12 @@
     </div>
 
     <% if @lead.errors.any? %>
-      <div class="row alert alert-error">
+      <div class="row alert alert-error alert-margin">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>!Vaya¡</strong> Se ha producido un error
+        <strong>Algo ha ido mal:</strong>
         <ul>
-          <% @lead.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
+          <% @lead.errors.values.reject{ |x| x.blank? }.each do |msg| %>
+            <li><%= msg[0] %></li>
           <% end %>
         </ul>
       </div>

@@ -47,7 +47,7 @@ class LeadsController < ApplicationController
         format.html { redirect_to @lead, notice: 'Lead was successfully created.' }
         format.json { render json: @lead, status: :created, location: @lead }
       else
-        format.html { render action: "new" }
+        format.html { render "new" }
         format.json { render json: @lead.errors, status: :unprocessable_entity }
       end
     end

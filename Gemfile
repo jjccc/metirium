@@ -8,6 +8,7 @@ gem 'rails', '3.1.0'
 gem 'pg'
 gem "rake", "0.8.7"
 gem "ValidateEmail", "~> 1.0.0"
+gem "gon"
 
 
 

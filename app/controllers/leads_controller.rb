@@ -26,7 +26,7 @@ class LeadsController < ApplicationController
   # GET /leads/new.json
   def new
     @lead = Lead.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @lead }

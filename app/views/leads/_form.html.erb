@@ -24,3 +24,9 @@
     <% end %>
   </div>
 <% end %>
+<%= render "congrats" %>
+<% if flash[:notice] %>
+  <script>
+    $("#myModal").modal("show");
+  </script>    
+<% end %>

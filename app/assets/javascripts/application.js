@@ -7,3 +7,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){
+  
+  // Diálogo modal de contacto
+  $("#contact").click(function(){
+    $("#contact-dlg").modal(); 
+  });
+  
+});

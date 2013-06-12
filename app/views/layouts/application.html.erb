@@ -21,7 +21,7 @@
         <div class="nav-collapse collapse">
           <ul class="nav">
             <li class="active"><a href="<%= root_path %>">Inicio</a></li>
-            <li><a href="#contact">Contacto</a></li>            
+            <li><a id="contact" href="#">Contacto</a></li>            
           </ul>
           <ul class="nav pull-right twitter">
             <li><%= link_to_twitter %></li>
@@ -39,6 +39,7 @@
     </footer>
   </div>  
 
-  <%= render :partial => "layouts/twitter" %>
+  <%= render "layouts/contact" %>
+  <%= render "layouts/twitter" %>
 </body>
 </html>

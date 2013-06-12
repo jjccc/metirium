@@ -10,8 +10,10 @@ class Lead < ActiveRecord::Base
   validate :mail_cannot_be_wrong, :on => :create
   
   def mail_cannot_be_wrong
-    if !ValidateEmail.validate(self.email.strip, true)
-      errors.add(:email, "La dirección especificada no es una dirección de correo válida")
+    unless self.email.blank?
+      unless ValidateEmail.validate(self.email.strip, true)
+        errors.add(:email, "La dirección especificada no es una dirección de correo válida")
+      end
     end
   end 
 end

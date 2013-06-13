@@ -1,4 +1,4 @@
-<%= form_for(@lead, :html => {:class => "form-inline"}) do |f| %>
+<%= form_for(@lead, :remote => true, :html => {:"data-type" => :json, :class => "form-inline"}) do |f| %>
   <div class="hero-unit">
     <div class="row lead">
       <p>Si te interesa la aplicación y quieres estar al tanto de su evolución hasta su lanzamiento, por favor, déjanos tu nombre y tu dirección de correo.</p>
@@ -26,10 +26,4 @@
 <% end %>
 
 <%= render "congrats" %>
-
-<% if flash[:notice] %>
-  <script>
-    $("#myModal").modal("show");
-  </script>
-<% end %>
 

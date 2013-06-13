@@ -13,7 +13,7 @@ class LeadsController < ApplicationController
     respond_to do |format|
       if @lead.save
         format.html { redirect_to root_path, notice: "OK" }
-        format.json { render json: @lead, status: :created, location: @lead }
+        format.json { render json: @lead, status: :created, location: new_lead_url }
       else
         format.html { render "new" }
         format.json { render json: @lead.errors, status: :unprocessable_entity }

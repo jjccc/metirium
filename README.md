@@ -1,4 +1,4 @@
 metirium
 ========
 
-Multiplatform quantified self application
+Multiplatform quantified self application.

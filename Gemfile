@@ -9,6 +9,7 @@ gem 'pg'
 gem "rake", "0.8.7"
 gem "ValidateEmail", "~> 1.0.0"
 gem "gon"
+gem "mustache", "~> 0.99.4"
 
 
 

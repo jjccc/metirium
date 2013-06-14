@@ -15,5 +15,12 @@ class Lead < ActiveRecord::Base
         errors.add(:email, "La dirección especificada no es una dirección de correo válida")
       end
     end
+  end
+  
+  def as_json(options={})
+    {
+      name: self.name.blank? ? "Anónimo" : self.name,
+      email: self.email
+    }
   end 
 end

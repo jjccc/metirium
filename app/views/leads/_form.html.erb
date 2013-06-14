@@ -8,22 +8,14 @@
     <div class="row">
       <%= f.text_field :name, :class => "span4", :maxlength => 150, :placeholder => "Nombre (obligatorio)" %>
       <%= f.text_field :email, :class => "span5", :maxlength => 250, :placeholder => "Correo electrónico (obligatorio)"%>
-      <%= f.submit "Enviar", :class => "btn span2 btn-primary" %>
+      <%= f.submit "Enviar", :id => "send-button", :class => "btn span2 btn-primary" %>
     </div>
-
-    <% if @lead.errors.any? %>
-      <div class="row alert alert-error alert-margin">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Algo ha ido mal:</strong>
-        <ul>
-          <% @lead.errors.values.reject{ |x| x.blank? }.each do |msg| %>
-            <li><%= msg[0] %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
   </div>
 <% end %>
 
 <%= render "congrats" %>
+
+<script type="text/html" id="popover_error_template">
+  <%= render "leads/popover_error" %>
+</script>
 

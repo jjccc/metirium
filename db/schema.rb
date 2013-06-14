@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130604224313) do
+ActiveRecord::Schema.define(:version => 20130614221726) do
 
   create_table "leads", :force => true do |t|
-    t.string   "name",       :limit => 150, :null => false
+    t.string   "name"
     t.string   "email",      :limit => 250, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"

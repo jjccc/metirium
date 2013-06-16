@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="span9">
+    <h1>Mediciones</h1>
+    <div class="row">
+      <div class="span5">
+        <% @dashboard.recent_dimensions.each do |rd| %>          
+          <h3><%= rd[:name] %></h3>
+        <% end %>
+      </div>
+      <div class="span4">
+        <h3><button class="btn btn-primary btn-block" type="button">Elegir escenario</button></h3>
+        <h3><button class="btn btn-primary btn-block" type="button">Definir medición</button></h3>        
+        <h3><button class="btn btn-primary btn-block" type="button">Gestionar mediciones</button></h3>
+      </div>
+    </div>
+  </div>   
+</div>
+
+<div class="row"><hr /></div>
+
+<div class="row">
+  <div class="span9">
+    <h1>Historial de mediciones</h1>
+    <div class="row">
+      <div class="span5">
+        <% @dashboard.recent_measurements.each do |rm| %>          
+          <h3><%= rm[:name] %></h3>
+        <% end %>
+      </div>
+      <div class="span4">
+        <h3><button class="btn btn-primary btn-block" type="button">Registrar medición</button></h3>
+        <h3><button class="btn btn-primary btn-block" type="button">Gestionar registros de medición</button></h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row"><hr /></div>
+
+<div class="row">
+  <div class="span9">
+    <h1>Estadísticas</h1>
+    <div class="row">
+      <div class="span6"></div>
+      <div class="span3"></div>
+    </div>
+  </div>
+</div>

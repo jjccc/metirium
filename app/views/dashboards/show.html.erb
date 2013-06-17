@@ -1,48 +1,98 @@
-<div class="row">
-  <div class="span9">
-    <h1>Mediciones</h1>
-    <div class="row">
-      <div class="span5">
-        <% @dashboard.recent_dimensions.each do |rd| %>          
-          <h3><%= rd[:name] %></h3>
-        <% end %>
-      </div>
-      <div class="span4">
-        <h3><button class="btn btn-primary btn-block" type="button">Elegir escenario</button></h3>
-        <h3><button class="btn btn-primary btn-block" type="button">Definir medición</button></h3>        
-        <h3><button class="btn btn-primary btn-block" type="button">Gestionar mediciones</button></h3>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="span3 side">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><h5><a href="#">Últimas mediciones</a></h5></li>
+        <li><h5><a href="#">Elegir escenario</a></h5></li>
+        <li><h5><a href="#">Añadir medición</a></h5></li>
+        <li><h5><a href="#">Gestionar mediciones</a></h5></li>
+      </ul>
     </div>
-  </div>   
-</div>
-
-<div class="row"><hr /></div>
-
-<div class="row">
-  <div class="span9">
-    <h1>Historial de mediciones</h1>
-    <div class="row">
-      <div class="span5">
-        <% @dashboard.recent_measurements.each do |rm| %>          
-          <h3><%= rm[:name] %></h3>
+    <div class="span7 offset1">
+      <h2>Mediciones</h2>
+      <p id="dimension-explanation" class="muted">
+      Mostrándose las 5 últimas mediciones definidas, de un total de 58 mediciones.
+      </p> 
+      <div class="clearfix">
+        <% @dashboard.recent_dimensions.each do |rd| %>          
+          <h4><%= rd[:name] %></h4>
         <% end %>
       </div>
-      <div class="span4">
-        <h3><button class="btn btn-primary btn-block" type="button">Registrar medición</button></h3>
-        <h3><button class="btn btn-primary btn-block" type="button">Gestionar registros de medición</button></h3>
+      <div class="clearfix">
+        <div class="pagination">
+          <ul>
+            <li><a href="#">Prev</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">Next</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="row"><hr /></div>
-
-<div class="row">
-  <div class="span9">
-    <h1>Estadísticas</h1>
-    <div class="row">
-      <div class="span6"></div>
-      <div class="span3"></div>
+  
+  <div class="row">
+    <div class="span3 side">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><h5><a href="#">Últimos registros</a></h5></li>
+        <li><h5><a href="#">Registrar medición</a></h5></li>
+        <li><h5><a href="#">Gestionar registros</a></h5></li>
+      </ul>
+    </div>
+    <div class="span7 offset1">
+      <h2>Historial de mediciones</h2>
+      <p id="measurements-explanation" class="muted">
+      Mostrándose los 5 últimos registros de medición, de un total de 318 registros.
+      </p> 
+      <div class="clearfix">
+        <% @dashboard.recent_measurements.each do |rm| %>          
+          <h4><%= rm[:name] %></h4>
+        <% end %>
+      </div>
+      <div class="clearfix">
+        <div class="pagination">
+          <ul>
+            <li><a href="#">Prev</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">Next</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="span3 side">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><h5><a href="#">Últimas estadísticas</a></h5></li>
+        <li><h5><a href="#">Generar estadística</a></h5></li>
+        <li><h5><a href="#">Gestionar estadísticas</a></h5></li>
+      </ul>
+    </div>
+    <div class="span7 offset1">
+      <h2>Estadísticas</h2>
+      <p id="measurements-explanation" class="muted">
+      Mostrándose las 5 últimas estadísticas generadas, de un total de 110 estadísticas.
+      </p> 
+      <div class="clearfix">
+        <% @dashboard.recent_charts.each do |rc| %>          
+          <h4><%= rc[:name] %></h4>
+        <% end %>
+      </div>
+      <div class="clearfix">
+        <div class="pagination">
+          <ul>
+            <li><a href="#">Prev</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">Next</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>

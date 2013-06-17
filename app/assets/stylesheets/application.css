@@ -48,4 +48,10 @@ body {
 .twitter {
   margin-top: 10px !important;
 }
-
+.side {
+  padding-top: 100px;
+  padding-right: 10px;
+  border-right: #CCCCCC 1px solid;
+  text-align: right;
+  height: 250px;
+}

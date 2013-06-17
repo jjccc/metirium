@@ -11,11 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130614221726) do
+ActiveRecord::Schema.define(:version => 20130617230510) do
+
+  create_table "dimensions", :force => true do |t|
+    t.string   "name",       :limit => 250, :null => false
+    t.integer  "fact_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "facts", :force => true do |t|
+    t.string   "name",       :limit => 50, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "leads", :force => true do |t|
     t.string   "name"
     t.string   "email",      :limit => 250, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "measurements", :force => true do |t|
+    t.string   "name",         :limit => 250, :null => false
+    t.integer  "dimension_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -11,7 +11,7 @@
     <div class="span7 offset1">
       <h2>Mediciones</h2>
       <p id="dimension-explanation" class="muted">
-      Mostrándose las 5 últimas mediciones definidas, de un total de 58 mediciones.
+      Mostrando mediciones definidas, de un total de <%= total_dimensions_tag(@dashboard.total_dimensions) %>.
       </p> 
       <div class="clearfix">
         <% @dashboard.recent_dimensions.each do |rd| %>          
@@ -43,7 +43,7 @@
     <div class="span7 offset1">
       <h2>Historial de mediciones</h2>
       <p id="measurements-explanation" class="muted">
-      Mostrándose los 5 últimos registros de medición, de un total de 318 registros.
+      Mostrando registros de medición, de un total de <%= total_measurements_tag(@dashboard.total_measurements) %>.
       </p> 
       <div class="clearfix">
         <% @dashboard.recent_measurements.each do |rm| %>          
@@ -67,15 +67,15 @@
   <div class="row">
     <div class="span3 side">
       <ul class="nav nav-pills nav-stacked">
-        <li class="active"><h5><a href="#">Últimas estadísticas</a></h5></li>
-        <li><h5><a href="#">Generar estadística</a></h5></li>
-        <li><h5><a href="#">Gestionar estadísticas</a></h5></li>
+        <li class="active"><h5><a href="#">Últimos gráficos</a></h5></li>
+        <li><h5><a href="#">Generar gráfico</a></h5></li>
+        <li><h5><a href="#">Gestionar gráficos</a></h5></li>
       </ul>
     </div>
     <div class="span7 offset1">
-      <h2>Estadísticas</h2>
+      <h2>Gráficos</h2>
       <p id="measurements-explanation" class="muted">
-      Mostrándose las 5 últimas estadísticas generadas, de un total de 110 estadísticas.
+      Mostrando gráficos generados, de un total de <%= total_charts_tag(@dashboard.total_charts) %>.
       </p> 
       <div class="clearfix">
         <% @dashboard.recent_charts.each do |rc| %>          

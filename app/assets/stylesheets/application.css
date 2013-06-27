@@ -32,10 +32,10 @@ body {
   display: inline;
   margin-top: -220px;
   margin-right: -60px;
-  font-size: 9px;
+  font-size: 10px;
 }
 .flickr-box {
-  width: 80px;
+  width: 100px;
   height: 24px;
   margin-top: 4px;
   text-align: center;
@@ -54,4 +54,14 @@ body {
   border-right: #CCCCCC 1px solid;
   text-align: right;
   height: 250px;
+}
+
+.modal .modal-header, .modal .modal-footer{
+  background-color: #505050;
+  color: #DDDD90;
+}
+
+.modal .modal-body{
+  background-color: #DDDD90;
+  border-color: #DDDD90;
 }

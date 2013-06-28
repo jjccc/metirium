@@ -51,8 +51,26 @@ body {
 .side {
   padding-top: 100px;
   padding-right: 10px;
-  border-right: #CCCCCC 1px solid;
+  border-right: #808080 1px solid;
   text-align: right;
   height: 250px;
 }
 
+.side-menu li {
+  height: 30px;
+}
+
+.dashboard > .row {
+  border-bottom: 1px solid #808080;
+}
+
+.dashboard > .row.last {
+  border-bottom: 0px;
+}
+
+.side-menu .nav-pills > .active > a,
+.side-menu .nav-pills > .active > a:hover,
+.side-menu .nav-pills > .active > a:focus {
+  color: #dddd90;
+  background-color: #5b9436;
+}

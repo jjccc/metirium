@@ -1,16 +1,16 @@
-<div class="container">
+<div class="container dashboard">
   <div class="row">
-    <div class="span3 side">
+    <div class="span2 side side-menu">
       <ul class="nav nav-pills nav-stacked">
-        <li class="active"><h5><a href="#">Últimas mediciones</a></h5></li>
-        <li><h5><a href="#">Elegir escenario</a></h5></li>
-        <li><h5><a href="#">Añadir medición</a></h5></li>
-        <li><h5><a href="#">Gestionar mediciones</a></h5></li>
+        <li class="active"><a href="#">Últimas mediciones</a></li>
+        <li><a href="#">Elegir escenario</a></li>
+        <li><a href="#">Añadir medición</a></li>
+        <li><a href="#">Gestionar mediciones</a></li>
       </ul>
     </div>
     <div class="span7 offset1">
       <h2>Mediciones</h2>
-      <p id="dimension-explanation" class="muted">
+      <p id="dimension-explanation">
       Mostrando mediciones definidas, de un total de <%= total_dimensions_tag(@dashboard.total_dimensions) %>.
       </p> 
       <div class="clearfix">
@@ -33,16 +33,16 @@
   </div>
   
   <div class="row">
-    <div class="span3 side">
+    <div class="span2 side side-menu">
       <ul class="nav nav-pills nav-stacked">
-        <li class="active"><h5><a href="#">Últimos registros</a></h5></li>
-        <li><h5><a href="#">Registrar medición</a></h5></li>
-        <li><h5><a href="#">Gestionar registros</a></h5></li>
+        <li class="active"><a href="#">Últimos registros</a></li>
+        <li><a href="#">Registrar medición</a></li>
+        <li><a href="#">Gestionar registros</a></li>
       </ul>
     </div>
     <div class="span7 offset1">
       <h2>Historial de mediciones</h2>
-      <p id="measurements-explanation" class="muted">
+      <p id="measurements-explanation">
       Mostrando registros de medición, de un total de <%= total_measurements_tag(@dashboard.total_measurements) %>.
       </p> 
       <div class="clearfix">
@@ -64,17 +64,17 @@
     </div>
   </div>
   
-  <div class="row">
-    <div class="span3 side">
+  <div class="row last">
+    <div class="span2 side side-menu">
       <ul class="nav nav-pills nav-stacked">
-        <li class="active"><h5><a href="#">Últimos gráficos</a></h5></li>
-        <li><h5><a href="#">Generar gráfico</a></h5></li>
-        <li><h5><a href="#">Gestionar gráficos</a></h5></li>
+        <li class="active"><a href="#">Últimos gráficos</a></li>
+        <li><a href="#">Generar gráfico</a></li>
+        <li><a href="#">Gestionar gráficos</a></li>
       </ul>
     </div>
     <div class="span7 offset1">
       <h2>Gráficos</h2>
-      <p id="measurements-explanation" class="muted">
+      <p id="measurements-explanation">
       Mostrando gráficos generados, de un total de <%= total_charts_tag(@dashboard.total_charts) %>.
       </p> 
       <div class="clearfix">

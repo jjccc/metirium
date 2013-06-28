@@ -56,12 +56,3 @@ body {
   height: 250px;
 }
 
-.modal .modal-header, .modal .modal-footer{
-  background-color: #505050;
-  color: #DDDD90;
-}
-
-.modal .modal-body{
-  background-color: #DDDD90;
-  border-color: #DDDD90;
-}

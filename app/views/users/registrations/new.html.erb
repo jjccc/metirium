@@ -1,0 +1,45 @@
+<div class="container sign-up">
+  <div class="row">
+    <div class="hero-unit span9 offset1">
+      <div class="row lead">
+        <h2>Crea tu cuenta de Metirium en un minuto.</h2>
+        <h5 class="muted">Inicialmente se creará una cuenta gratuita con la que podrás disfrutar de las funciones básicas de la aplicación.</h5>
+        <h5 class="muted">Posteriormente, si lo deseas, podrás contratar una versión de pago con más funciones.</h5>
+        <h5 class="muted">Si ya eres un usuario registrado en Metirium, <a href="#">accede a tu cuenta</a>.</h5>
+      </div>  
+
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-horizontal"}) do |f| %>
+        <%= devise_error_messages! %>
+      
+        <div class="control-group">
+          <%= f.label :email, "Correo", :for => "user_email", :class => "control-label" %>
+          <div class="controls">
+            <%= f.email_field :email, :autofocus => true, :class => "span5", :maxlength => 250 %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :password, "Contraseña", :for => "user_password", :class => "control-label" %>
+          <div class="controls">
+            <%= f.password_field :password, :class => "span5", :maxlength => 32 %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :password_confirmation, "Confirma contraseña", :for => "user_password_confirmation", :class => "control-label" %>
+          <div class="controls">
+            <%= f.password_field :password_confirmation, :class => "span5", :maxlength => 32 %>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls btn-submit">
+            <%= f.submit "Crear cuenta", :class => "btn btn-primary btn-large btn-custom" %>
+          </div>
+        </div>
+      <% end %>
+      
+      <%= render "users/shared/links" %>
+  
+    </div>
+  </div>
+  
+</div>
+

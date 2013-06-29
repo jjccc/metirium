@@ -74,3 +74,40 @@ body {
   color: #dddd90;
   background-color: #5b9436;
 }
+
+.sign-up .hero-unit {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.sign-up form {
+  margin-top: 40px;
+}
+
+.sign-up .control-label {
+  width: 190px !important;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 35px;
+  padding-right: 20px;
+}
+
+.sign-up .control-group,
+.sign-up .controls {
+  height: 60px;
+}
+
+.sign-up input[class*="span"] {
+  height: 35px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.sign-up .btn-submit {
+  padding-left: 30px;
+}
+
+.sign-up .popover-content {
+  color: #505050;
+  font-size: 14px;
+}

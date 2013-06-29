@@ -1,4 +1,6 @@
 Metirium::Application.routes.draw do
+  devise_for :users
+
   resources :leads, :only => [:new, :create]
   
   resources :dashboards, :only => [:show]

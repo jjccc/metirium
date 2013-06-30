@@ -24,6 +24,8 @@
             <li><a id="contact" href="#">Contacto</a></li>
             <% if user_signed_in? %>
               <li><a id="logout" href="<%= destroy_user_session_path %>">Salir</a></li>
+            <% else %>
+              <li><a id="login" href="<%= new_user_session_path %>">Iniciar sesión</a></li>
             <% end %>            
           </ul>
           <ul class="nav pull-right twitter">

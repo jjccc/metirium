@@ -21,7 +21,10 @@
         <div class="nav-collapse collapse">
           <ul class="nav">
             <li class="active"><a href="<%= root_path %>">Inicio</a></li>
-            <li><a id="contact" href="#">Contacto</a></li>            
+            <li><a id="contact" href="#">Contacto</a></li>
+            <% if user_signed_in? %>
+              <li><a id="logout" href="<%= destroy_user_session_path %>">Salir</a></li>
+            <% end %>            
           </ul>
           <ul class="nav pull-right twitter">
             <li><%= link_to_twitter %></li>

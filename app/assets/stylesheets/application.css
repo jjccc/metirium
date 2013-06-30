@@ -111,3 +111,7 @@ body {
   color: #505050;
   font-size: 14px;
 }
+
+.sign-up input[type*="checkbox"] {
+  margin-top: 15px;
+}

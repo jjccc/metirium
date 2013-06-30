@@ -1,17 +1,42 @@
-<h2>Sign in</h2>
+<div class="container sign-up">
+  <div class="row">
+    <div class="hero-unit span9 offset1">
+      <div class="row lead">
+        <h2>Accede a tu cuenta de Metirium.</h2>
+        <h5 class="muted">Si has olvidado tu contraseña puedes recuperarla <a href="">aquí</a>.</h5>
+        <h5 class="muted">Si aún no eres un usuario registrado en Metirium, <a href="<%= new_user_registration_path %>">crea tu cuenta</a> en 1 minuto.</h5>
+      </div>  
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
-
-<%= render "users/shared/links" %>
+      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "form-horizontal"}) do |f| %>
+        <%= devise_error_messages! %>
+      
+        <div class="control-group">
+          <%= f.label :email, "Correo", :for => "user_email", :class => "control-label" %>
+          <div class="controls">
+            <%= f.email_field :email, :autofocus => true, :class => "span5", :maxlength => 250 %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :password, "Contraseña", :for => "user_password", :class => "control-label" %>
+          <div class="controls">
+            <%= f.password_field :password, :class => "span5", :maxlength => 32 %>
+          </div>
+        </div>    
+        <% if devise_mapping.rememberable? %>
+          <div class="control-group"> 
+            <%= f.label :remember_me, "Recordar mis datos", :for => "user_remember_me", :class => "control-label" %>
+            <div class="controls">           
+              <%= f.check_box :remember_me %> 
+            </div>
+          </div>
+        <% end %>    
+        <div class="control-group">
+          <div class="controls btn-submit">
+            <%= f.submit "Acceder a la cuenta", :class => "btn btn-primary btn-large btn-custom" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
+</div>

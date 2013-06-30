@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
+  has_many :dimensions
+  
     # La contraseña debe tener como mínimo un dígito para ser válida
   validate :password_must_contain_digits, :on => :create
   

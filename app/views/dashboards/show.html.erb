@@ -18,17 +18,19 @@
           <h4><%= rd[:name] %></h4>
         <% end %>
       </div>
-      <div class="clearfix">
-        <div class="pagination">
-          <ul>
-            <li><a href="#">Prev</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">Next</a></li>
-          </ul>
+      <% if @dashboard.has_dimensions_paginator %>
+        <div class="clearfix">
+          <div class="pagination">
+            <ul>
+              <li><a href="#">Prev</a></li>
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">Next</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
   
@@ -50,17 +52,19 @@
           <h4><%= rm[:name] %></h4>
         <% end %>
       </div>
-      <div class="clearfix">
-        <div class="pagination">
-          <ul>
-            <li><a href="#">Prev</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">Next</a></li>
-          </ul>
+      <% if @dashboard.has_measurements_paginator %>
+        <div class="clearfix">
+          <div class="pagination">
+            <ul>
+              <li><a href="#">Prev</a></li>
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">Next</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
   
@@ -82,17 +86,19 @@
           <h4><%= rc[:name] %></h4>
         <% end %>
       </div>
-      <div class="clearfix">
-        <div class="pagination">
-          <ul>
-            <li><a href="#">Prev</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">Next</a></li>
-          </ul>
+      <% if @dashboard.has_charts_paginator %>
+        <div class="clearfix">
+          <div class="pagination">
+            <ul>
+              <li><a href="#">Prev</a></li>
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">Next</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

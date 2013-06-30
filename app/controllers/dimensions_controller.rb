@@ -1,4 +1,5 @@
 class DimensionsController < ApplicationController
+  before_filter :authenticate_user!
   
   # /dimensions
   def index

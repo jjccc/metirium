@@ -3,7 +3,7 @@ class DashboardsController < ApplicationController
   
   # /dashboards/1
   def show
-    @dashboard = Dashboard.new
+    @dashboard = Dashboard.new(current_user)
   end
   
 end

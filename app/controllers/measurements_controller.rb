@@ -1,4 +1,5 @@
 class MeasurementsController < ApplicationController
+  before_filter :authenticate_user!
   
   # /measurements
   def index

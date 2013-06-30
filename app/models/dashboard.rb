@@ -4,7 +4,7 @@ class Dashboard
   attr_reader :recent_measurements, :recent_dimensions, :recent_charts, 
               :total_measurements, :total_dimensions, :total_charts
   
-  def initialize
+  def initialize(user)
     @recent_dimensions = []
     5.times do |i|
       @recent_dimensions << { :name => "Dimensión #{i}" }

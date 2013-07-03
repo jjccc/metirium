@@ -1,7 +1,7 @@
-class DashboardsController < ApplicationController
+class UsersController < ApplicationController
   before_filter :authenticate_user!
   
-  # /dashboards/1
+  # /users/1
   def show
     @dashboard = Dashboard.new(current_user)
   end

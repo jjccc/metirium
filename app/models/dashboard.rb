@@ -19,7 +19,7 @@ class Dashboard
    
     unless user.nil?
       dimensions = user.dimensions
-      measurements = Measurement.includes(:dimension).where(:dimensions => { :id => user.id }) 
+      measurements = Measurement.where(:dimension_id => dimensions.map(&:id)) 
       @recent_dimensions = dimensions.order("created_at desc").limit(5)
       @recent_measurements = measurements.limit(5)
       

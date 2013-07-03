@@ -3,7 +3,12 @@ class DimensionsController < ApplicationController
   
   # /dimensions
   def index
-    @dimensions = Dimension.order("updated_at desc")
+    page = params[:page].present? ? params[:page].to_i : 1
+    size = params[:size].present? ? params[:size].to_i : 5
+    from = (page - 1) * size
+    to = from + size - 1
+    @dimensions = current_user.dimensions.order("updated_at desc")[from..to]  
+      
     respond_to do |format|
       format.json { render :json => @dimensions }
     end

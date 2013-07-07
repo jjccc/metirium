@@ -6,6 +6,7 @@ class DimensionsController < ApplicationController
     @dimensions = current_user.dimensions.order("updated_at desc").page(params[:page]).per(5)
       
     respond_to do |format|
+      format.js
       format.json { render :json => @dimensions }
     end
   end

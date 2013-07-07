@@ -7,9 +7,9 @@ Metirium::Application.routes.draw do
 
   resources :leads, :only => [:new, :create]
     
-  resources :dimensions, :only => [:index], :constraints => { :format => "json" }
+  resources :dimensions, :only => [:index]
   
-  resources :measurements, :only => [:index], :constraints => { :format => "json" }
-
+  resources :measurements, :only => [:index]
+  
   root :to => 'leads#new'
 end

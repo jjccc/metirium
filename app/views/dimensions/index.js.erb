@@ -1,0 +1,8 @@
+$("#dimensions").html("");
+<% @dimensions.each do |d| %>
+  $("#dimensions").append($(Mustache.to_html($('#dimension_template').html(), <%= d.to_json.to_s.html_safe %>)));
+<% end %> 
+$('#dimension-paginator').html('<%= escape_javascript(paginate(@dimensions, 
+                                                               :theme => 'twitter-bootstrap', 
+                                                               :params => {:controller => 'dimensions', :action => 'index'}, 
+                                                               :remote => true).to_s) %>');                                                        

@@ -1,5 +1,3 @@
-<%= javascript_include_tag "users/show" %>
-
 <div class="container dashboard">
   <div class="row">
     <div class="span2 side side-menu">
@@ -23,9 +21,9 @@
       <% if @dashboard.has_dimensions_paginator %>        
         <div id="dimension-paginator" class="clearfix">
           <%= paginate @dashboard.recent_dimensions, 
-                     :theme => 'twitter-bootstrap', 
-                     :params => {:controller => 'dimensions', :action => 'index'}, 
-                     :remote => true %>
+                       :theme => 'twitter-bootstrap', 
+                       :params => {:controller => 'dimensions', :action => 'index'},                 
+                       :remote => true %>
         </div>
       <% end %>
     </div>
@@ -52,9 +50,9 @@
       <% if @dashboard.has_measurements_paginator %>
         <div id="measurement-paginator" class="clearfix">
           <%= paginate @dashboard.recent_measurements, 
-                     :theme => 'twitter-bootstrap', 
-                     :params => {:controller => 'measurements', :action => 'index'}, 
-                     :remote => true %>
+                       :theme => 'twitter-bootstrap', 
+                       :params => {:controller => 'measurements', :action => 'index'}, 
+                       :remote => true %>
         </div>
       <% end %>
     </div>

@@ -6,6 +6,7 @@ class MeasurementsController < ApplicationController
     @measurements = Measurement.where(:dimension_id => current_user.dimensions.map(&:id)).order("updated_at desc").page(params[:page]).per(5)
     
     respond_to do |format|
+      format.js
       format.json { render :json => @measurements }
     end
   end

@@ -1,0 +1,8 @@
+$("#measurements").html("");
+<% @measurements.each do |m| %>
+  $("#measurements").append($(Mustache.to_html($('#measurement_template').html(), <%= m.to_json.to_s.html_safe %>)));
+<% end %> 
+$('#measurement-paginator').html('<%= escape_javascript(paginate(@measurements, 
+                                                                 :theme => 'twitter-bootstrap', 
+                                                                 :params => {:controller => 'measurements', :action => 'index'}, 
+                                                                 :remote => true).to_s) %>'); 

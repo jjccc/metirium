@@ -212,12 +212,12 @@ body {
   background-color: #DDDD96;
 }
 a {
-  color: #5b9436;
+  color: #0080FF;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #5b9436;
+  color: #0080FF;
   text-decoration: underline;
 }
 .img-rounded {

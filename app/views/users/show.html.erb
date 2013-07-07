@@ -1,3 +1,5 @@
+<%= javascript_include_tag "users/show" %>
+
 <div class="container dashboard">
   <div class="row">
     <div class="span2 side side-menu">
@@ -13,22 +15,17 @@
       <p id="dimension-explanation">
       Mostrando mediciones definidas, de un total de <%= total_dimensions_tag(@dashboard.total_dimensions) %>.
       </p> 
-      <div class="clearfix">
+      <div id="dimensions" class="clearfix">
         <% @dashboard.recent_dimensions.each do |rd| %>          
           <h4><%= rd[:name] %></h4>
         <% end %>
       </div>
-      <% if @dashboard.has_dimensions_paginator %>
-        <div class="clearfix">
-          <div class="pagination">
-            <ul>
-              <li><a href="#">Prev</a></li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">Next</a></li>
-            </ul>
-          </div>
+      <% if @dashboard.has_dimensions_paginator %>        
+        <div id="dimension-paginator" class="clearfix">
+          <%= paginate @dashboard.recent_dimensions, 
+                     :theme => 'twitter-bootstrap', 
+                     :params => {:controller => 'dimensions', :action => 'index'}, 
+                     :remote => true %>
         </div>
       <% end %>
     </div>
@@ -47,22 +44,17 @@
       <p id="measurements-explanation">
       Mostrando registros de medición, de un total de <%= total_measurements_tag(@dashboard.total_measurements) %>.
       </p> 
-      <div class="clearfix">
+      <div id="measurements" class="clearfix">
         <% @dashboard.recent_measurements.each do |rm| %>          
           <h4><%= rm[:name] %></h4>
         <% end %>
       </div>
       <% if @dashboard.has_measurements_paginator %>
-        <div class="clearfix">
-          <div class="pagination">
-            <ul>
-              <li><a href="#">Prev</a></li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">Next</a></li>
-            </ul>
-          </div>
+        <div id="measurement-paginator" class="clearfix">
+          <%= paginate @dashboard.recent_measurements, 
+                     :theme => 'twitter-bootstrap', 
+                     :params => {:controller => 'measurements', :action => 'index'}, 
+                     :remote => true %>
         </div>
       <% end %>
     </div>
@@ -104,4 +96,7 @@
 </div>
 <script type="text/html" id="dimension_template">
   <%= render "dimensions/dimension" %>
-</script>
+</script>  
+<script type="text/html" id="measurement_template">
+  <%= render "measurements/measurement" %>
+</script>  

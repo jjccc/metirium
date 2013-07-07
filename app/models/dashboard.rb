@@ -18,13 +18,13 @@ class Dashboard
     end
    
     unless user.nil?
-      dimensions = user.dimensions
-      measurements = Measurement.where(:dimension_id => dimensions.map(&:id)) 
-      @recent_dimensions = dimensions.order("created_at desc").limit(5)
-      @recent_measurements = measurements.limit(5)
+      measurements = Measurement.where(:dimension_id => user.dimensions.map(&:id)) 
+      
+      @recent_dimensions = user.dimensions.order("created_at desc").page(1).per(5)
+      @recent_measurements = measurements.order("created_at desc").page(1).per(5)
       
       @total_measurements = measurements.count
-      @total_dimensions = dimensions.count
+      @total_dimensions = user.dimensions.count
       @total_charts = @recent_charts.count
     end
   end

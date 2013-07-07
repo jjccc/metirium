@@ -7,7 +7,7 @@
 */
 
 body {
-  padding-top: 60px;
+  padding-top: 80px;
   padding-bottom: 40px;
 }
 
@@ -72,7 +72,7 @@ body {
 .side-menu .nav-pills > .active > a:hover,
 .side-menu .nav-pills > .active > a:focus {
   color: #dddd90;
-  background-color: #5b9436;
+  background-color: #0080FF;
 }
 
 .sign-up .hero-unit {
@@ -114,4 +114,14 @@ body {
 
 .sign-up input[type*="checkbox"] {
   margin-top: 15px;
+}
+
+ul.metirium.nav {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.twitter-container {
+  margin-top: 10px;
 }

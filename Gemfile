@@ -11,7 +11,8 @@ gem "ValidateEmail", "~> 1.0.0"
 gem "gon"
 gem "mustache", "~> 0.99.4"
 gem "devise"
-
+gem "kaminari"
+gem "bootstrap-kaminari-views"
 
 
 # Gems used only for assets and not required

@@ -11,4 +11,10 @@ class DimensionsController < ApplicationController
     end
   end
   
+  # /dimensions/new
+  def new
+    @dimension = Dimension.new
+    @facts = Fact.order(:id)
+  end
+  
 end

@@ -1,0 +1,39 @@
+<%= javascript_include_tag "dimensions/dimensions" %>
+
+<div class="container sign-up">
+  <div class="row">
+    <div class="hero-unit span9 offset1">
+      <div class="row lead">
+        <h2>Crea una nueva medición.</h2>
+        <h5 class="muted">Una medición es cualquier acción que quieres medir. </h5>
+        <h5 class="muted">Dale un nombre que la describa correctamente y define qué tipo de medición es.</h5>
+      </div>  
+
+      <%= form_for(@dimension, :html => { :class => "form-horizontal"}) do |f| %>        
+      
+        <div class="control-group">
+          <%= f.label :name, "Nombre", :for => "dimension_name", :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_field :name, :autofocus => true, :class => "span5", :maxlength => 250 %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :fact_id, "Tipo de medición", :for => "user_fact_id", :class => "control-label" %>
+          <div class="controls">                        
+            <% @facts.each do |fact| %>
+              <%= f.radio_button(:fact_id, fact.id) %>
+              <%= f.label "fact_id_#{fact.id}", fact.name, :class => "fact" %>
+            <% end %>            
+          </div>
+        </div>               
+        <div class="control-group">
+          <div class="controls btn-submit">
+            <%= f.submit "Crear medición", :class => "btn btn-primary btn-large btn-custom" %>
+            <%= link_to "Cancelar", user_path(current_user), :class => "btn btn-large btn-danger" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
+</div>

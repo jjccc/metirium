@@ -7,9 +7,9 @@ Metirium::Application.routes.draw do
 
   resources :leads, :only => [:new, :create]
     
-  resources :dimensions, :only => [:index]
+  resources :dimensions
   
-  resources :measurements, :only => [:index]
+  resources :measurements
   
   root :to => 'leads#new'
 end

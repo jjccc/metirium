@@ -25,12 +25,12 @@ test:
   port: 5432
 
 production:
-  adapter: postgresql
-  encoding: UTF8
+  adapter: mysql2
+  encoding: utf8
   reconnect: false
-  database: metirium
+  database: metirium_prod
   pool: 5
-  username: postgres
+  username: jjccc
   password: 1p4rp3ad
-  host: localhost
-  port: 5432
+  host: 127.0.0.1
+  port: 3306

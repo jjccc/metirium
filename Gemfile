@@ -5,7 +5,14 @@ gem "rails", "3.1.0"
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem "pg"
+group :production do
+  gem "mysql2"  
+end
+
+group :development do
+  gem "pg"  
+end
+
 gem "rake", "0.8.7"
 gem "ValidateEmail", "~> 1.0.0"
 gem "gon"

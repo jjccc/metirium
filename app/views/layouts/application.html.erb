@@ -4,8 +4,8 @@
   <title>Metirium - Si se puede medir, mídelo.</title>  
   <%= include_gon %>
   <%= favicon_link_tag %>
-  <%= stylesheet_link_tag    "application", "bootstrap" %>
-  <%= javascript_include_tag "application", "bootstrap.min.js" %>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application.js", "bootstrap.min.js" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -23,7 +23,7 @@
           <ul class="metirium nav">
             <li class="active"><a href="<%= root_path %>">Inicio</a></li>
             <li><a id="contact" href="#">Contacto</a></li>
-            <% if Rails.env.development? %>
+            <% if !Rails.env.production? %>
               <% if user_signed_in? %>
                 <li><a id="logout" href="<%= destroy_user_session_path %>">Salir</a></li>
               <% else %>

@@ -30,7 +30,7 @@ production:
   reconnect: false
   database: metirium_prod
   pool: 5
-  username: jjccc
+  username: metirium_jjccc
   password: 1p4rp3ad
-  host: 127.0.0.1
-  port: 3306
+  host: localhost
+

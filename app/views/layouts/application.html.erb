@@ -23,7 +23,7 @@
           <ul class="metirium nav">
             <li class="active"><a href="<%= root_path %>">Inicio</a></li>
             <li><a id="contact" href="#">Contacto</a></li>
-            <% if Rails.env.production? %>
+            <% if Rails.env.development? %>
               <% if user_signed_in? %>
                 <li><a id="logout" href="<%= destroy_user_session_path %>">Salir</a></li>
               <% else %>

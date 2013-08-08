@@ -12,6 +12,8 @@ class LeadsController < ApplicationController
 
     respond_to do |format|
       if @lead.save
+        LeadMailer.welcome_mail(@lead).deliver
+        
         format.html { redirect_to root_path, notice: "OK" }
         format.json { render json: @lead, status: :created, location: new_lead_url }
       else

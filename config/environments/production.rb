@@ -57,4 +57,16 @@ Metirium::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "metirium.com",
+    :port => 25,
+    :domain => "metirium.com" ,
+    :authentication => :login,
+    :user_name => "no-responder@metirium.com" ,
+    :password => "1p4rp3ad",
+    :enable_starttls_auto => false
+  }
+    
 end

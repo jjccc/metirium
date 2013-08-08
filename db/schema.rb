@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130630201922) do
+ActiveRecord::Schema.define(:version => 20130808220618) do
 
   create_table "dimensions", :force => true do |t|
     t.string   "name",       :limit => 250, :null => false
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20130630201922) do
     t.string   "email",      :limit => 250, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "digest"
   end
 
   create_table "measurements", :force => true do |t|

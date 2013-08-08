@@ -12,7 +12,10 @@ class LeadsController < ApplicationController
 
     respond_to do |format|
       if @lead.save
-        LeadMailer.welcome_mail(@lead).deliver
+        begin
+          LeadMailer.welcome_mail(@lead).deliver
+        rescue
+        end
         
         format.html { redirect_to root_path, notice: "OK" }
         format.json { render json: @lead, status: :created, location: new_lead_url }
@@ -20,6 +23,14 @@ class LeadsController < ApplicationController
         format.html { render "new" }
         format.json { render json: @lead.errors, status: :unprocessable_entity }
       end
+    end
+  end
+  
+  #DELETE /leads
+  def destroy
+    unless params[:digest].blank?
+      @leads = Lead.where(:digest => params[:digest])
+      @leads.find_each(&:destroy) unless @leads.blank?
     end
   end
 

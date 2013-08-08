@@ -5,7 +5,8 @@ Metirium::Application.routes.draw do
   
   resources :users, :only => [:show]
 
-  resources :leads, :only => [:new, :create]
+  resources :leads, :only => [:new, :create, :destroy]
+  match "leads/:digest/unsuscribe", to: "leads#destroy", via: [:get]
     
   resources :dimensions
   

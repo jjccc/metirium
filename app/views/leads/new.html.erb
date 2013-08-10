@@ -1,12 +1,19 @@
 <%= javascript_include_tag "leads/new" %>
 
+<div class="row text-center landing-title">
+  <div class="lead span12">
+    <h1>Mide, representa y analiza hechos con cualquier dispositivo.</h1>
+  </div>    
+</div>
+
+<%= render 'form' %>
+
 <div id="landing-carousel" class="carousel slide">
   <div class="carousel-inner">  
     <div class="active item landing-slider-1 hero-unit"> 
       <div class="landing-margin">     
-        <h1>Mídelo todo.</h1>
+        <h2>Mídelo todo.</h2>
         <p>Metirium es una aplicación para para registrar y analizar mediciones de todo tipo.</p>
-        <a href="#features" class="btn btn-primary btn-large btn-custom">Conoce más funciones &raquo;</a>
       </div>
       <div class="flickr-ref">
         <div class="flickr-box">
@@ -16,9 +23,8 @@
     </div>
     <div class="item landing-slider-2 hero-unit">
       <div class="landing-margin"> 
-        <h1>Con cualquier dispositivo.</h1>
+        <h2>Con cualquier dispositivo.</h2>
         <p>Metirium te permite realizar mediciones desde un ordenador, una tablet o un móvil.</p>
-        <a href="#features" class="btn btn-primary btn-large btn-custom">Conoce más funciones &raquo;</a>
       </div>
       <div class="flickr-ref">
         <div class="flickr-box">
@@ -28,9 +34,8 @@
     </div>
     <div class="item landing-slider-3 hero-unit">
       <div class="landing-margin"> 
-        <h1>Extrae conclusiones.</h1>
+        <h2>Extrae conclusiones.</h2>
         <p>Metirium genera gráficas e información estadística a partir de tus mediciones.</p>
-        <a href="#features" class="btn btn-primary btn-large btn-custom">Conoce más funciones &raquo;</a>
       </div>
       <div class="flickr-ref">
         <div class="flickr-box">
@@ -40,9 +45,8 @@
     </div>
     <div class="item landing-slider-4 hero-unit">
       <div class="landing-margin"> 
-        <h1>Acceso por API.</h1>
+        <h2>Acceso por API.</h2>
         <p>Metirium proporciona una API para su integración con tus aplicaciones.</p>
-        <a href="#features" class="btn btn-primary btn-large btn-custom">Conoce más funciones &raquo;</a>
       </div>
       <div class="flickr-ref">
         <div class="flickr-box">
@@ -55,9 +59,6 @@
   <a class="carousel-control right" href="#landing-carousel" data-slide="next">&rsaquo;</a>
 </div>
 
-<%= render 'form' %>
-
-<a id="features"></a>
   
 <div class="row">
   <div class="span3">

@@ -1,10 +1,10 @@
 <%= form_for(@lead, :remote => true, :html => {:"data-type" => :json, :class => "form-horizontal"}) do |f| %>
   <div class="jumbotron">
     <div class="row">
-      <div class="col-6">
-        Metirium se encuentra en fase de desarrollo y verá la luz definitiva próximamente. Si te interesa la aplicación y quieres estar al tanto de su evolución hasta su lanzamiento, por favor, déjanos tu dirección de correo.        
+      <div class="col-lg-6">
+        ¡Empezamos a medir próximamente!<br>Suscríbete a la lista de correo para informarte de las novedades.        
       </div>
-      <div class="lead-form col-5 col-offset-1 pull-right">
+      <div class="col-lg-5 col-lg-offset-1 pull-right">
         <div class="form-group">
           <%= f.text_field :email, :class => "form-control input-lg input-block", :maxlength => 250, :placeholder => "ejemplo@micorreo.com"%>
         </div>

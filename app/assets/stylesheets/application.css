@@ -60,21 +60,11 @@ body {
   font-weight: bold;
   line-height: 35px;
   padding-right: 20px;
+  margin-top: -10px;
 }
 
-.sign-up .control-group,
-.sign-up .controls {
-  height: 60px;
-}
-
-.sign-up input[class*="span"] {
-  height: 35px;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.sign-up .btn-submit {
-  padding-left: 30px;
+.sign-up .form-group {
+  height: 80px;
 }
 
 .sign-up .popover-content {
@@ -157,3 +147,5 @@ input[type=text]:focus, input[type=password]:focus{
 hr {
   border-top: 1px solid #808080 !important;  
 }
+
+

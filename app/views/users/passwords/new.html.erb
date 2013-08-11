@@ -1,30 +1,29 @@
 <%= javascript_include_tag "users/login" %>
 
 <div class="container sign-up">
-  <div class="row">
-    <div class="hero-unit span9 offset1">
-      <div class="row lead">
-        <h2>¿Has olvidado tu contraseña?</h2>
-        <h5 class="text-muted">No importa, te enviamos una nueva a tu dirección de correo. No podemos enviarte la que tenías antes, porque en Metirium, por motivos de seguridad, guardamos las contraseñas cifradas, no las originales.</h5>
-        <h5 class="text-muted">Te enviaremos un correo con instrucciones de como restaurar la contraseña.</h5>
-      </div>  
+  <div class="jumbotron col-lg-8 col-lg-offset-2">
+    <div class="row">
+      <h2>¿Has olvidado tu contraseña?</h2>
+      <h5 class="text-muted">No importa, te enviamos una nueva a tu dirección de correo. No podemos enviarte la que tenías antes, porque en Metirium, por motivos de seguridad, guardamos las contraseñas cifradas, no las originales.</h5>
+      <h5 class="text-muted">Te enviaremos un correo con instrucciones de como restaurar la contraseña.</h5>
+    </div>  
 
-      <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :class => "form-horizontal"}) do |f| %>
-        <%= devise_error_messages! %>
-      
-        <div class="control-group">
+    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :class => "form-horizontal"}) do |f| %>
+      <%= devise_error_messages! %>
+    
+      <div class="form-group">
+        <div class="col-lg-4">
           <%= f.label :email, "Correo", :for => "user_email", :class => "control-label" %>
-          <div class="controls">
-            <%= f.email_field :email, :autofocus => true, :class => "span5", :maxlength => 250 %>
-          </div>
         </div>
-        <div class="control-group">
-          <div class="controls btn-submit">
-            <%= f.submit "Recibir información sobre como restaurar la contraseña", :class => "btn btn-primary btn-large btn-custom" %>
-          </div>
+        <div class="col-lg-5">
+          <%= f.email_field :email, :autofocus => true, :class => "form-control input-lg", :maxlength => 250 %>
         </div>
-      <% end %>
-    </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-5 col-lg-offset-4 btn-submit">
+          <%= f.submit "Recibir instrucciones", :class => "btn btn-block btn-lg btn-custom" %>
+        </div>
+      </div>
+    <% end %>
   </div>
-  
 </div>

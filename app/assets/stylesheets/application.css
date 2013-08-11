@@ -7,8 +7,10 @@
 */
 
 body {
-  padding-top: 80px;
+  padding-top: 78px;
   padding-bottom: 40px;
+  color: #505050 !important;
+  background-color: #DDDD96 !important;
 }
 
 .landing-slider-1 {
@@ -119,11 +121,11 @@ body {
 ul.metirium.nav {
   font-size: 18px;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 13px;
 }
 
 .twitter-container {
-  margin-top: 10px;
+  margin-top: 17px;
 }
 
 .leadmail {
@@ -136,4 +138,54 @@ ul.metirium.nav {
 .landing-title {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.jumbotron {
+  color: #DDDD90 !important;
+  background-color: #505050 !important;
+}
+
+.btn-custom {
+  background-color: hsl(61, 100%, 47%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fcff6b", endColorstr="#ebef00");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#fcff6b), to(#ebef00));
+  background-image: -moz-linear-gradient(top, #fcff6b, #ebef00);
+  background-image: -ms-linear-gradient(top, #fcff6b, #ebef00);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fcff6b), color-stop(100%, #ebef00));
+  background-image: -webkit-linear-gradient(top, #fcff6b, #ebef00);
+  background-image: -o-linear-gradient(top, #fcff6b, #ebef00);
+  background-image: linear-gradient(#fcff6b, #ebef00);
+  border-color: #ebef00 #ebef00 hsl(61, 100%, 41%);
+  color: #505050 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.39);
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+input[type=text]:focus, input[type=password]:focus{
+  border-color: #fcff6b;
+  -moz-box-shadow: 0px 0px 6px #fcff6b;
+  -webkit-box-shadow: 0px 0px 6px #fcff6b;
+  box-shadow: 0px 0px 6px #fcff6b;
+}
+
+.lead-form {
+  margin-top: 15px;
+}
+
+.popover-title {
+  background-color: #b94a48 !important;
+  color: #ffffff !important;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.popover-content {
+  color: #b94a48 !important;
+  font-size: 14px;
+}
+
+hr {
+  border-top: 1px solid #808080 !important;  
 }

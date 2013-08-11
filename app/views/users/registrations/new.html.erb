@@ -5,9 +5,9 @@
     <div class="hero-unit span9 offset1">
       <div class="row lead">
         <h2>Crea tu cuenta de Metirium en un minuto.</h2>
-        <h5 class="muted">Inicialmente se creará una cuenta gratuita con la que podrás disfrutar de las funciones básicas de la aplicación.</h5>
-        <h5 class="muted">Posteriormente, si lo deseas, podrás contratar una versión de pago con más funciones.</h5>
-        <h5 class="muted">Si ya eres un usuario registrado en Metirium, <a href="<%= new_user_session_path %>">accede a tu cuenta</a>.</h5>
+        <h5 class="text-muted">Inicialmente se creará una cuenta gratuita con la que podrás disfrutar de las funciones básicas de la aplicación.</h5>
+        <h5 class="text-muted">Posteriormente, si lo deseas, podrás contratar una versión de pago con más funciones.</h5>
+        <h5 class="text-muted">Si ya eres un usuario registrado en Metirium, <a href="<%= new_user_session_path %>">accede a tu cuenta</a>.</h5>
       </div>  
 
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-horizontal"}) do |f| %>

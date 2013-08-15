@@ -9,7 +9,7 @@
         <h5 class="text-muted">Dale un nombre que la describa correctamente y define qué tipo de medición es.</h5>
       </div>  
 
-      <%= form_for(@dimension, :html => { :class => "form-horizontal"}) do |f| %>        
+      <%= form_for(@dimension, :url => { action: "create" }, :html => { :class => "form-horizontal"}) do |f| %>        
       
         <div class="control-group">
           <%= f.label :name, "Nombre", :for => "dimension_name", :class => "control-label" %>

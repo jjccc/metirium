@@ -18,32 +18,6 @@ body {
 .twitter {
   margin-top: 10px !important;
 }
-.side {
-  padding-top: 100px;
-  padding-right: 10px;
-  border-right: #808080 1px solid;
-  text-align: right;
-  height: 250px;
-}
-
-.side-menu li {
-  height: 30px;
-}
-
-.dashboard > .row {
-  border-bottom: 1px solid #808080;
-}
-
-.dashboard > .row.last {
-  border-bottom: 0px;
-}
-
-.side-menu .nav-pills > .active > a,
-.side-menu .nav-pills > .active > a:hover,
-.side-menu .nav-pills > .active > a:focus {
-  color: #dddd90;
-  background-color: #0080FF;
-}
 
 .sign-up .jumbotron {
   margin-top: 50px;
@@ -152,16 +126,13 @@ hr {
   background-color: #505050;
   border: 1px solid #505050;
   border-radius: 4px;
-  margin: 20px;
+  margin: 15px;
   color: #DDDD96;
 }
 
-.fast-buttons .row {
-  padding: 5px !important;  
-}
-
 .mpanel .row {
-  padding-left: 10px;  
+  padding-left: 25px;
+  padding-right: 25px;  
 }
 
 .mpanel .title {
@@ -170,13 +141,9 @@ hr {
 }
 
 .mpanel .info {
+  font-size: 18px;
   margin-top: 10px;
   margin-bottom: 10px;
-}
-
-.mpanel .title h4 {
-  padding-left: 10px;
-  padding-top: 5px;
 }
 
 .mpanel hr {

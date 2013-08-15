@@ -3,7 +3,7 @@ class DashboardsController < ApplicationController
   
   # /users/1/dashboards
   def index
-    @dashboard = Dashboard.new(User.find(params[:user_id]))    
+    @dashboard = Dashboard.new(current_user)    
   end
   
 end

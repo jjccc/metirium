@@ -1,7 +1,7 @@
 class MeasurementsController < ApplicationController
   before_filter :authenticate_user!
   
-  # /measurements
+  # users/1/measurements
   def index
     @measurements = Measurement.where(:dimension_id => current_user.dimensions.map(&:id)).order("updated_at desc").page(params[:page]).per(5)
     

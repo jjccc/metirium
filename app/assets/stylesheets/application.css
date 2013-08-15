@@ -148,4 +148,46 @@ hr {
   border-top: 1px solid #808080 !important;  
 }
 
+.mpanel {
+  background-color: #505050;
+  border: 1px solid #505050;
+  border-radius: 4px;
+  margin: 20px;
+  color: #DDDD96;
+}
 
+.fast-buttons .row {
+  padding: 5px !important;  
+}
+
+.mpanel .row {
+  padding-left: 10px;  
+}
+
+.mpanel .title {
+  margin-top: -5px;
+  border-bottom: 1px solid #DDDD96;
+}
+
+.mpanel .info {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.mpanel .title h4 {
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+.mpanel hr {
+  padding: 0px !important; 
+  margin: 0px !important;
+}
+
+.mpanel .entry span {
+  padding-left: 5px;
+}
+
+.mpanel .table tbody>tr>td {
+  border: 0;
+}

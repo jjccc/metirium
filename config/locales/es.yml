@@ -6,3 +6,8 @@ es:
       previous: "&lsaquo; Anterior"
       next: "Siguiente &rsaquo;"
       truncate: "..."
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M:%S"
+      date: "%d/%m/%Y"
+      time: "%H:%M:%S"

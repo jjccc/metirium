@@ -1,0 +1,60 @@
+<div class="container dashboard">
+  <div class="col-2 fast-buttons mpanel">
+    <div class="row">
+      <button type="button" class="btn btn-lg btn-block btn-custom">
+        <div class="row">Crear</div>
+        <div class="row">nueva variable</div>
+      </button>
+    </div>
+    <div class="row">
+      <button type="button" class="btn btn-lg btn-block btn-custom">
+        <div class="row">Realizar</div>
+        <div class="row">nueva medición</div>
+      </button>
+    </div>    
+  </div>
+  <div class="col-9">
+    <div class="row">
+      <div class="col-12 mpanel">
+        <div class="row title">
+          <h3>Resumen</h3>      
+        </div>    
+        <div class="row info text-center">
+          <table class="table">
+            <tr>
+              <td>
+                <h4 class="text-muted">Has creado</h4><h2><%= h dimensions(@dashboard.dimensions) %></h2><h4 class="text-muted"><%= h text_dimensions(@dashboard.dimensions) %></h4>
+              </td>
+              <td>
+                <h4 class="text-muted">Has realizado</h4><h2><%= h measurements(@dashboard.measurements) %></h2><h4 class="text-muted"><%= h text_measurements(@dashboard.measurements) %></h4>
+              </td>
+              <td>
+                <h4 class="text-muted">Has generado</h4><h2><%= h charts(@dashboard.charts) %></h2><h4 class="text-muted"><%= h text_charts(@dashboard.charts) %></h4>
+              </td>
+            </tr>
+          </table>          
+        </div>
+      </div>
+    </div>
+    <% unless @dashboard.events.blank? %>
+      <div class="row">
+        <div class="col-12 mpanel">
+          <div class="row title">
+            <h3>Actividad reciente</h3>      
+          </div>    
+          <div class="row info">          
+            <table class="table table-condensed">   
+              <% @dashboard.events.each do |e| %>         
+                <tr>
+                  <td class="col-1"><%= l e.created_at, :format => :date %></td>
+                  <td class="col-1"><%= l e.created_at, :format => :time %></td>
+                  <td class="text-muted"><%= h event_text(e) %></td>
+                </tr>
+              <% end %>              
+            </table>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>  

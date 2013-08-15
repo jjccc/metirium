@@ -1,16 +1,40 @@
 # encoding: utf-8
 module DashboardsHelper
-  
-  def total_measurements_tag(n)
-    n == 1 ? "#{n} registro" : "#{n} registros"  
+ 
+  def dimensions(n)
+    n.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse
   end
   
-  def total_dimensions_tag(n)
-    n == 1 ? "#{n} medición" : "#{n} mediciones"
+  def text_dimensions(n)
+    n == 1 ? "variable" : "variables"
   end
   
-  def total_charts_tag(n)
-    n == 1 ? "#{n} gráfico" : "#{n} gráficos"
+  def measurements(n)
+    n.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse
+  end
+  
+  def text_measurements(n)
+    n == 1 ? "medición" : "mediciones"
+  end
+  
+  def charts(n)
+    n.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse
+  end
+  
+  def text_charts(n)
+    n == 1 ? "gráfico" : "gráficos"
+  end 
+   
+  def event_url_for(e)
+    e.class == Dimension ? user_dimension_url(current_user, e) : user_measurement_url(current_user, e)
+  end
+  
+  def event_text(e)
+    if e.class == Dimension
+      "Se crea la variable <a href='#{event_url_for(e)}'>#{e.name}</a>.".html_safe
+    else
+      "Se realiza una <a href='#{event_url_for(e)}'>medición</a> de la variable <a href='#{event_url_for(e.dimension)}'>#{e.dimension.name}</a>.".html_safe
+    end
   end
   
 end

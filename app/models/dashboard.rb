@@ -1,44 +1,34 @@
 # encoding: utf-8
 class Dashboard
   
-  attr_reader :recent_measurements, :recent_dimensions, :recent_charts, 
-              :total_measurements, :total_dimensions, :total_charts,
-              :has_dimensions_paginator, :has_measurements_paginator, :has_charts_paginator
+  attr_reader :dimensions, :measurements, :charts, :events
   
   def initialize(user)        
-    @total_dimensions = 0
-    @total_dimensions = 0
-    @total_charts = 0
-    @recent_dimensions = []
-    @recent_measurements = []
-    @recent_charts = []
-    
-    6.times do |i|
-      @recent_charts << { :name => "Estadística #{i}" }
-    end
+    @dimensions = 0
+    @measurements = 0
+    @charts = 0
+    @events = []
    
     unless user.nil?
-      measurements = Measurement.where(:dimension_id => user.dimensions.map(&:id)) 
+      current_dimensions = user.dimensions.order("created_at desc")
+      @dimensions = current_dimensions.count
+      current_measurements = Measurement.where(:dimension_id => current_dimensions.map(&:id)).order("created_at desc")
+      @measurements = current_measurements.count       
       
-      @recent_dimensions = user.dimensions.order("created_at desc").page(1).per(5)
-      @recent_measurements = measurements.order("created_at desc").page(1).per(5)
+      # Mezclamos y ordenamos variables y medidas para devolver las más recientes.
+      total_events = []
+      current_dimensions.each do |d|
+        total_events << [d.id, d.created_at, d]
+      end
+      current_measurements.each do |m|
+        total_events << [m.id, m.created_at, m]
+      end
       
-      @total_measurements = measurements.count
-      @total_dimensions = user.dimensions.count
-      @total_charts = @recent_charts.count
+      unless total_events.blank?
+        total_events.sort!{ |x, y| y[1] <=> x[1] }
+        @events = total_events[0..9].map{ |x| x[2] }
+      end
     end
   end
-  
-  def has_dimensions_paginator
-    @total_dimensions > 5
-  end
-  
-  def has_measurements_paginator
-    @total_measurements > 5
-  end
-  
-  def has_charts_paginator
-    @total_charts > 5
-  end
-  
+
 end

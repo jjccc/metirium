@@ -8,11 +8,11 @@ class ApplicationController < ActionController::Base
   
   def set_root
     @custom_root_path = root_path
-    @custom_root_path = user_path(current_user) if user_signed_in?
+    @custom_root_path = user_dashboards_path(current_user) if user_signed_in?
   end
   
   def after_sign_in_path_for(resource_or_scope)
-    user_path(current_user)
+    user_dashboards_path(current_user)
   end
   
   def after_sign_out_path_for(resource_or_scope)

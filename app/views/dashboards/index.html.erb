@@ -12,11 +12,13 @@
       <div class="row info">
         <table class="table">
           <tr>
-            <td>
+            <td class="col-6">
               <a href="<%= new_user_dimension_url(current_user) %>" class="btn btn-block btn-lg btn-custom">Crear nueva variable</a>
             </td>
             <td>
-              <a href="<%= new_user_measurement_url(current_user) %>" class="btn btn-block btn-lg btn-custom">Realizar nueva medición</a>
+              <% if @dashboard.dimensions > 0 %>
+                <a href="<%= new_user_measurement_url(current_user) %>" class="btn btn-block btn-lg btn-custom">Realizar nueva medición</a>              
+              <% end %>
             </td>
           </tr>
         </table>         

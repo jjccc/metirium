@@ -158,3 +158,10 @@ hr {
 .mpanel .table tbody>tr>td {
   border: 0;
 }
+
+.mbreadcrumb {
+  padding: 8px 15px;
+  margin-bottom: 20px;
+  list-style: none;
+  background-color: #DDDD96 !important;
+}

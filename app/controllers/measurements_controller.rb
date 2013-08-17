@@ -11,4 +11,11 @@ class MeasurementsController < ApplicationController
     end
   end
   
+  # users/1/measurements/new
+  def new
+    @measurement = Measurement.new
+    
+    @facts = Fact.order(:id)
+  end
+  
 end

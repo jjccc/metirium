@@ -1,24 +1,12 @@
 # encoding: utf-8
 module DashboardsHelper
- 
-  def dimensions(n)
-    n.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse
-  end
-  
+
   def text_dimensions(n)
     n == 1 ? "variable" : "variables"
   end
   
-  def measurements(n)
-    n.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse
-  end
-  
   def text_measurements(n)
     n == 1 ? "medición" : "mediciones"
-  end
-  
-  def charts(n)
-    n.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse
   end
   
   def text_charts(n)

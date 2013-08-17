@@ -13,10 +13,10 @@
         <table class="table">
           <tr>
             <td>
-              <button type="button" class="btn btn-block btn-lg btn-custom">Crear nueva variable</button>
+              <a href="<%= new_user_dimension_url(current_user) %>" class="btn btn-block btn-lg btn-custom">Crear nueva variable</a>
             </td>
             <td>
-              <button type="button" class="btn btn-block btn-lg btn-custom">Realizar nueva medición</button>
+              <a href="<%= new_user_measurement_url(current_user) %>" class="btn btn-block btn-lg btn-custom">Realizar nueva medición</a>
             </td>
           </tr>
         </table>         
@@ -32,13 +32,13 @@
         <table class="table">
           <tr>
             <td>
-              <h4 class="text-muted">Has creado</h4><h2><%= h dimensions(@dashboard.dimensions) %></h2><h4 class="text-muted"><%= h text_dimensions(@dashboard.dimensions) %></h4>
+              <h4 class="text-muted">Has creado</h4><h2><%= number_with_delimiter(@dashboard.dimensions, :delimiter => ".") %></h2><h4 class="text-muted"><%= h text_dimensions(@dashboard.dimensions) %></h4>
             </td>
             <td>
-              <h4 class="text-muted">Has realizado</h4><h2><%= h measurements(@dashboard.measurements) %></h2><h4 class="text-muted"><%= h text_measurements(@dashboard.measurements) %></h4>
+              <h4 class="text-muted">Has realizado</h4><h2><%= number_with_delimiter(@dashboard.measurements, :delimiter => ".") %></h2><h4 class="text-muted"><%= h text_measurements(@dashboard.measurements) %></h4>
             </td>
             <td>
-              <h4 class="text-muted">Has generado</h4><h2><%= h charts(@dashboard.charts) %></h2><h4 class="text-muted"><%= h text_charts(@dashboard.charts) %></h4>
+              <h4 class="text-muted">Has generado</h4><h2><%= number_with_delimiter(@dashboard.charts, :delimiter => ".") %></h2><h4 class="text-muted"><%= h text_charts(@dashboard.charts) %></h4>
             </td>
           </tr>
         </table>          

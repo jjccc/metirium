@@ -1,39 +1,46 @@
 <%= javascript_include_tag "dimensions/dimensions" %>
 
 <div class="container sign-up">
-  <div class="row">
-    <div class="hero-unit span9 offset1">
-      <div class="row lead">
-        <h2>Crea una nueva medición.</h2>
-        <h5 class="text-muted">Una medición es cualquier acción que quieres medir. </h5>
-        <h5 class="text-muted">Dale un nombre que la describa correctamente y define qué tipo de medición es.</h5>
-      </div>  
-
-      <%= form_for(@dimension, :url => { action: "create" }, :html => { :class => "form-horizontal"}) do |f| %>        
-      
-        <div class="control-group">
-          <%= f.label :name, "Nombre", :for => "dimension_name", :class => "control-label" %>
-          <div class="controls">
-            <%= f.text_field :name, :autofocus => true, :class => "span5", :maxlength => 250 %>
-          </div>
-        </div>
-        <div class="control-group">
-          <%= f.label :fact_id, "Tipo de medición", :for => "user_fact_id", :class => "control-label" %>
-          <div class="controls">                        
-            <% @facts.each do |fact| %>
-              <%= f.radio_button(:fact_id, fact.id) %>
-              <%= f.label "fact_id_#{fact.id}", fact.name, :class => "fact" %>
-            <% end %>            
-          </div>
-        </div>               
-        <div class="control-group">
-          <div class="controls btn-submit">
-            <%= f.submit "Crear medición", :class => "btn btn-primary btn-large btn-custom" %>
-            <%= link_to "Cancelar", user_path(current_user), :class => "btn btn-large btn-danger" %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
+  <%= render :partial => "shared/flash", :locals => { :errors => @dimension.errors, :message => "No se ha podido guardar correctamente la variable." } %>
   
+  <div class="jumbotron col-lg-10 col-lg-offset-1">
+    <div class="row">
+      <h2>Creación de una nueva variable.</h2>
+      <h5 class="text-muted">Una variable es cualquier acción que quieres medir.</h5>
+      <h5 class="text-muted">Dale un nombre que la describa correctamente y define qué tipo de variable es.</h5>
+    </div>  
+
+    <%= form_for(@dimension, :url => { action: "create" }, :html => { :class => "form-horizontal"}) do |f| %>      
+      <%= f.hidden_field :user_id, :value => @dimension.user_id %>
+      <div class="form-group <%= h has_error_class(@dimension.errors, :name) %>">
+        <div class="col-lg-3">
+          <%= f.label :name, "Nombre", :for => "dimension_name", :class => "control-label " %>
+        </div>
+        <div class="col-lg-9">
+          <%= f.text_field :name, :autofocus => true, :class => "form-control input-lg", :maxlength => 250, :placeholder => "ej.: Calorías ingeridas diariamente" %>
+          <%= render :partial => "shared/control_error_text", :locals => { :errors => @dimension.errors, :symbol => :name } %>          
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-3">
+          <%= f.label :fact_id, "Tipo de variable", :for => "user_fact_id", :class => "control-label" %>
+        </div>
+        <div class="col-lg-9">
+          <div id="dimension_fact_id" class="btn-group" data-toggle="buttons">
+            <% @facts.each do |fact| %>              
+              <label id="<%= "fact_id_#{fact.id}" %>" class="btn btn-default">
+                <%= f.radio_button(:fact_id, fact.id ) %><%= fact.name %>
+              </label>
+            <% end %>
+          </div>
+        </div>
+      </div>              
+      <div class="form-group">
+        <div class="col-lg-9 col-lg-offset-3 btn-submit">
+          <%= f.submit "Crear variable", :class => "btn btn-lg btn-custom" %>
+          <%= link_to "Volver", @custom_root_path, :class => "btn btn-lg btn-danger" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

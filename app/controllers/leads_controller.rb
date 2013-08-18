@@ -4,6 +4,7 @@ class LeadsController < ApplicationController
   # GET /leads/new
   def new
     @lead = Lead.new
+    redirect_to @custom_root_path if user_signed_in?
   end
 
   # POST /leads

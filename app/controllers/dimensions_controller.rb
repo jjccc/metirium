@@ -33,4 +33,14 @@ class DimensionsController < ApplicationController
     end
   end
   
+  # GET users/1/dimensions/1
+  def show
+    @dimension = Dimension.find(params[:id])
+    
+    respond_to do |format|
+      format.html { render "show" }
+      format.json { render json: @dimension }
+    end
+  end
+  
 end

@@ -7,6 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require mustache
+//= require js-routes
 
 $(document).ready(function(){
   

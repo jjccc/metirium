@@ -61,6 +61,8 @@ GEM
     jquery-rails (3.0.2)
       railties (< 5.0, >= 3.0)
       thor (< 2.0, >= 0.14)
+    js-routes (0.7.5)
+      rails (>= 3.0)
     json (1.8.0)
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
@@ -136,6 +138,7 @@ DEPENDENCIES
   devise
   gon
   jquery-rails
+  js-routes (= 0.7.5)
   kaminari
   mustache (~> 0.99.4)
   pg

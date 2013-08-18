@@ -1,0 +1,70 @@
+<%= javascript_include_tag "measurements/measurements" %>
+
+<div class="container sign-up">
+  <%= render :partial => "shared/flash", :locals => { :errors => @measurement.errors, :message => "No se ha podido guardar correctamente la medición." } %>
+  
+  <div id="step1" class="jumbotron col-lg-10 col-lg-offset-1">
+    <div class="row">
+      <h2>Realización de una nueva medición.</h2>
+      <h5 class="text-muted">En primer lugar selecciona la variable que quieres medir y a continuación pulsa el botón "Siguiente".</h5>
+    </div> 
+    
+    <div class="row">
+      <ul class="list-unstyled">   
+        <% @dimensions.each do |d| %>         
+          <li>
+            <%= radio_button_tag "dimension", d.id %>   <%= label_tag "dimension", d.name %>
+            <%= hidden_field_tag "dimension_#{d.id}_fact_id", d.fact_id %>
+          </li>
+        <% end %>              
+      </ul>
+    </div>
+    
+    <div class="row">
+      <%= link_to_function "Siguiente", "do_measurement(#{current_user.id})", :class => "btn btn-lg btn-custom" %>
+      <%= link_to "Volver", @custom_root_path, :class => "btn btn-lg btn-danger" %>
+    </div>
+  </div>
+
+
+  <div id="step2" class="jumbotron col-lg-10 col-lg-offset-1">
+    <div class="row">
+      <h2 id="measurement_title"></h2>
+      <h5 id="spot_help_text" class="text-muted">Esta variable es puntual, por lo que no necesitas introducir más datos. El comentario no es obligatorio. Al pulsar el botón "Medir" se grabará una medición con la hora actual.</h5>
+      <h5 id="quantified_help_text" class="text-muted">Esta variable es cuantificada, por lo que necesitas introducir la cantidad registrada. Al pulsar el botón "Medir" se grabará una medición con la cantidad especificada y la hora actual.</h5>
+      <h5 id="periodic_help_text" class="text-muted">Esta variable es periódica, por lo que necesitas introducir cada cuanto quieres que se mida. Al pulsar el botón "Medir" se grabará una medición con la hora actual.</h5>
+    </div> 
+    
+    <%= form_for(@measurement, :url => create_user_measurement_path(current_user), :html => { :class => "form-horizontal"}) do |f| %>
+      <div id="amount_block" class="form-group <%= h has_error_class(@measurement.errors, :amount) %>">
+        <div class="col-lg-3">
+          <%= f.label :amount, "Cantidad", :for => "measurement_amount", :class => "control-label" %>
+        </div>
+        <div class="col-lg-3">
+          <%= f.text_field :amount, :autofocus => true, :class => "form-control input-lg", :maxlength => 15, :placeholder => "ej.: 25,5" %>
+          <%= render :partial => "shared/control_error_text", :locals => { :errors => @measurement.errors, :symbol => :amount } %>          
+        </div>
+      </div>
+      <div class="form-group <%= h has_error_class(@measurement.errors, :comment) %>">
+        <div class="col-lg-3">
+          <%= f.label :comment, "Comentario", :for => "measurement_comment", :class => "control-label" %>
+        </div>
+        <div class="col-lg-9">
+          <%= f.text_area :comment, :class => "form-control input-lg", :maxlength => 250, :size => "50x5", :placeholder => "ej.: El día de mi cumpleaños" %>
+          <%= render :partial => "shared/control_error_text", :locals => { :errors => @measurement.errors, :symbol => :comment } %>          
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-9 col-lg-offset-3 btn-submit">
+          <%= f.submit "Medir", :class => "btn btn-lg btn-custom" %>
+          <%= link_to "Volver", @custom_root_path, :class => "btn btn-lg btn-danger" %>
+        </div>
+      </div>
+    <% end %>    
+  </div>
+  
+</div>
+
+<script type="text/html" id="dimension_template">
+  <%= render "dimensions/dimension" %>
+</script>

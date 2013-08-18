@@ -14,7 +14,7 @@ module DashboardsHelper
   end 
    
   def event_url_for(e)
-    e.class == Dimension ? user_dimension_url(current_user, e) : user_measurement_url(current_user, e)
+    e.class == Dimension ? user_dimension_url(current_user, e) : user_dimension_measurement_url(current_user, e.dimension_id, e)
   end
   
   def event_text(e)

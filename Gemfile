@@ -22,6 +22,7 @@ gem "mustache", "~> 0.99.4"
 gem "devise"
 gem "kaminari"
 gem "bootstrap-kaminari-views"
+gem "js-routes", "0.7.5"
 
 
 # Gems used only for assets and not required

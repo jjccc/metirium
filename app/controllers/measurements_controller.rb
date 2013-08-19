@@ -15,8 +15,9 @@ class MeasurementsController < ApplicationController
   # GET users/1/measurements/new
   def new
     @measurement = Measurement.new    
-    @dimensions = current_user.dimensions 
-    gon.is_step2 = false           
+    @dimensions = current_user.dimensions.order("created_at desc").limit(5) 
+    gon.is_step2 = false   
+    gon.user_id = current_user.id        
   end
   
   # POST users/1/dimensions/1/measurements
@@ -35,7 +36,6 @@ class MeasurementsController < ApplicationController
           gon.is_step2 = true
           gon.dimension_id = params[:dimension_id].to_i
           gon.user_id = current_user.id
-          gon.fact_id = @dimensions.select{ |d| d.id == params[:dimension_id].to_i }.first.fact_id
         end
         format.html { render "new" }
         format.json { render json: @measurement.errors, status: :unprocessable_entity }

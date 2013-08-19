@@ -1,4 +1,5 @@
-<%= javascript_include_tag "measurements/measurements" %>
+<%= javascript_include_tag "measurements/measurements", "jquery-ui-1.10.3.custom.min" %>
+<%= stylesheet_link_tag "custom-theme/jquery-ui-1.10.3.custom.min" %>
 
 <div class="container sign-up">
   <%= render :partial => "shared/flash", :locals => { :errors => @measurement.errors, :message => "No se ha podido guardar correctamente la medición." } %>
@@ -7,14 +8,27 @@
     <div class="row">
       <h2>Realización de una nueva medición.</h2>
       <h5 class="text-muted">En primer lugar selecciona la variable que quieres medir y a continuación pulsa el botón "Siguiente".</h5>
+      <h5 class="text-muted">Puedes buscar entre las variables existentes:</h5>
     </div> 
+    
+    <div class="row">
+      <div class="col-lg-9">
+        <%= text_field_tag :dimension_tokens, nil, :autofocus => true, :class => "form-control input-lg", :maxlength => 250 %>
+        <%= hidden_field_tag :selected_dimension_id %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="form-group">
+        <h5 class="text-muted">o bien escoger una de las variables más recientes.</h5>
+      </div>
+    </div>
     
     <div class="row">
       <ul class="list-unstyled">   
         <% @dimensions.each do |d| %>         
           <li>
-            <%= radio_button_tag "dimension", d.id %>   <%= label_tag "dimension", d.name %>
-            <%= hidden_field_tag "dimension_#{d.id}_fact_id", d.fact_id %>
+            <%= radio_button_tag "dimension", d.id, :remote => true %>   <%= label_tag "dimension", d.name %>            
           </li>
         <% end %>              
       </ul>

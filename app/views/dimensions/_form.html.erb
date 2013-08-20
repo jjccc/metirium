@@ -1,0 +1,30 @@
+<%= f.hidden_field :user_id, :value => dimension.user_id %>
+<div class="form-group <%= h has_error_class(dimension.errors, :name) %>">
+  <div class="col-lg-3">
+    <%= f.label :name, "Nombre", :for => "dimension_name", :class => "control-label " %>
+  </div>
+  <div class="col-lg-9">
+    <%= f.text_field :name, :autofocus => true, :class => "form-control input-lg", :maxlength => 250, :placeholder => "ej.: Calorías ingeridas diariamente" %>
+    <%= render :partial => "shared/control_error_text", :locals => { :errors => dimension.errors, :symbol => :name } %>          
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-lg-3">
+    <%= f.label :fact_id, "Tipo de variable", :for => "user_fact_id", :class => "control-label" %>
+  </div>
+  <div class="col-lg-9">
+    <div id="dimension_fact_id" class="btn-group" data-toggle="buttons">
+      <% facts.each do |fact| %>              
+        <label id="<%= "fact_id_#{fact.id}" %>" class="btn btn-default <%= h active_fact_class(fact, dimension) %>">
+          <%= f.radio_button(:fact_id, fact.id ) %><%= fact.name %>
+        </label>
+      <% end %>
+    </div>
+  </div>
+</div>              
+<div class="form-group">
+  <div class="col-lg-9 col-lg-offset-3 btn-submit">
+    <%= f.submit submit_text, :class => "btn btn-lg btn-custom" %>
+    <%= link_to "Volver", return_path, :class => "btn btn-lg btn-danger" %>
+  </div>
+</div>

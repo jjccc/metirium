@@ -1,0 +1,78 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3><b>Variable <i><%= @dimension.name %></i></b></h3>
+    </div>    
+  </div>
+  <div class="row">
+    <div class="mpanel">
+      <div class="row title">
+        <h3>Acciones frecuentes</h3>      
+      </div>
+      <div class="row info">
+        <table class="table">
+          <tr>
+            <td class="col-3">
+              <a href="<%= edit_user_dimension_url(current_user) %>" class="btn btn-block btn-lg btn-custom">Editar</a>
+            </td>
+            <td class="col-3">
+              <%= link_to "Eliminar", user_dimension_path(current_user, @dimension), 
+                          :confirm => "Se va a eliminar la variable y todas las mediciones que pudiera tener. ¿Quieres continuar?", 
+                          :method => :delete,                           
+                          :class => "btn btn-block btn-lg btn-custom" %>
+            </td>
+            <td class="col-3">
+              <a href="<%= new_user_dimension_measurement_url(current_user, @dimension) %>" class="btn btn-block btn-lg btn-custom">Realizar medición</a>              
+            </td>
+            <td class="col-3">
+              <% unless @measurements.blank? %>
+                <a href="<%= new_user_measurement_url(current_user) %>" class="btn btn-block btn-lg btn-custom">Eliminar mediciones</a>              
+              <% end %>
+            </td>
+            <td class="col-2">
+              <%= link_to "Volver", @custom_root_path, :class => "btn btn-lg btn-danger" %>    
+            </td>
+          </tr>
+        </table>         
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mpanel">
+      <div class="row title">
+        <h3>Resumen</h3>      
+      </div>    
+      <div class="row info text-center">
+        <table class="table">
+          <tr>
+            <td class="col-4">
+              <h4 class="text-muted">Creada el</h4><h2><%= @dimension.created_at.strftime("%d/%m/%Y") %></h2>
+            </td>
+            <td class="col-4">
+              <h4 class="text-muted">Es de tipo</h4><h2><%= @dimension.fact.name %></h2>
+            </td>
+            <td class="col-4">
+              <h4 class="text-muted">Tiene</h4><h2><%= number_with_delimiter(@measurements_count, :delimiter => ".") %></h2><h4 class="text-muted"><%= h text_measurements(@measurements_count) %></h4>
+            </td>
+          </tr>
+        </table>          
+      </div>
+    </div>
+  </div>
+  <% if @measurements_count > 0 %>
+    <div class="row">
+      <div class="mpanel">
+        <div class="row title">
+          <h3>Mediciones</h3>      
+        </div>    
+        <div class="row info">
+          <div id="chart">
+          </div>          
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>  
+
+<%= javascript_include_tag "dimensions/chart" %>

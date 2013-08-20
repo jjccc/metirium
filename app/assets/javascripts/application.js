@@ -8,6 +8,7 @@
 //= require jquery_ujs
 //= require mustache
 //= require js-routes
+//= require highcharts
 
 $(document).ready(function(){
   

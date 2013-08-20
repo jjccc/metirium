@@ -15,9 +15,14 @@ class MeasurementsController < ApplicationController
   # GET users/1/measurements/new
   def new
     @measurement = Measurement.new    
-    @dimensions = current_user.dimensions.order("created_at desc").limit(5) 
-    gon.is_step2 = false   
-    gon.user_id = current_user.id        
+    @dimensions = current_user.dimensions.order("created_at desc").limit(5)
+    @return_path = @custom_root_path     
+    gon.is_step2 = params[:dimension_id].present?     
+    gon.user_id = current_user.id
+    if params[:dimension_id].present?
+      gon.dimension_id = params[:dimension_id].to_i 
+      @return_path = user_dimension_path(current_user, params[:dimension_id].to_i)
+    end        
   end
   
   # POST users/1/dimensions/1/measurements

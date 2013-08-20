@@ -2,7 +2,7 @@
 class Dimension < ActiveRecord::Base
   belongs_to :fact
   belongs_to :user
-  has_many :measurements
+  has_many :measurements, :dependent => :destroy
   
   validates_presence_of :name, :message => "La variable debe tener un nombre."
   validates_presence_of :fact_id, :message => "La variable debe ser de algún tipo."

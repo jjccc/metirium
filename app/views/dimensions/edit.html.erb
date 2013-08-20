@@ -5,17 +5,17 @@
   
   <div class="jumbotron col-lg-10 col-lg-offset-1">
     <div class="row">
-      <h2>Creación de una nueva variable.</h2>
+      <h2>Edición de una variable.</h2>
       <h5 class="text-muted">Una variable es cualquier acción que quieres medir.</h5>
       <h5 class="text-muted">Dale un nombre que la describa correctamente y define qué tipo de variable es.</h5>
     </div>  
 
-    <%= form_for(@dimension, :url => { action: "create" }, :html => { :class => "form-horizontal"}) do |f| %>
+    <%= form_for(@dimension, :url => { action: "update" }, :html => { :class => "form-horizontal"}) do |f| %>
       <%= render :partial => "form", :locals => { :f => f, 
                                                   :dimension => @dimension, 
                                                   :facts => @facts, 
-                                                  :return_path => @custom_root_path,
-                                                  :submit_text => "Crear variable" } %>            
+                                                  :return_path => user_dimension_path(current_user, @dimension),
+                                                  :submit_text => "Modificar variable" } %>            
     <% end %>
   </div>
 </div>

@@ -6,14 +6,13 @@
   
   <div id="step1" class="jumbotron col-lg-10 col-lg-offset-1">
     <div class="row">
-      <h2>Realización de una nueva medición.</h2>
       <h5 class="text-muted">En primer lugar selecciona la variable que quieres medir y a continuación pulsa el botón "Siguiente".</h5>
       <h5 class="text-muted">Puedes buscar entre las variables existentes:</h5>
     </div> 
     
     <div class="row">
       <div class="col-lg-9">
-        <%= text_field_tag :dimension_tokens, nil, :autofocus => true, :class => "form-control input-lg", :maxlength => 250 %>
+        <%= text_field_tag :dimension_tokens, nil, :autofocus => true, :class => "form-control input-lg", :maxlength => 250, :placeholder => "Escribe para buscar una variable..." %>
         <%= hidden_field_tag :selected_dimension_id %>
       </div>
     </div>
@@ -36,7 +35,7 @@
     
     <div class="row">
       <%= link_to_function "Siguiente", "do_measurement(#{current_user.id})", :class => "btn btn-lg btn-custom" %>
-      <%= link_to "Volver", @custom_root_path, :class => "btn btn-lg btn-danger" %>
+      <%= link_to "Volver", @return_path, :class => "btn btn-lg btn-danger" %>
     </div>
   </div>
 
@@ -71,7 +70,7 @@
       <div class="form-group">
         <div class="col-lg-9 col-lg-offset-3 btn-submit">
           <%= f.submit "Medir", :class => "btn btn-lg btn-custom" %>
-          <%= link_to "Volver", @custom_root_path, :class => "btn btn-lg btn-danger" %>
+          <%= link_to "Volver", @return_path, :class => "btn btn-lg btn-danger" %>
         </div>
       </div>
     <% end %>    

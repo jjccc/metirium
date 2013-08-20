@@ -17,6 +17,42 @@ class DimensionsController < ApplicationController
     @dimension = current_user.dimensions.build    
   end
   
+  # GET /users/1/dimensions/1/edit
+  def edit
+    begin
+      @facts = Fact.order(:id)
+      @dimension = Dimension.find(params[:id])
+    rescue ActiveRecord::RecordNotFound      
+      respond_to do |format|
+        format.html { redirect_to @custom_root_path }
+        format.json { render json: Dimension.new, status: :unprocessable_entity } 
+      end
+    end
+  end
+  
+  # PUT users/1/dimensions/1
+  def update
+    begin
+      @facts = Fact.order(:id)
+      @dimension = Dimension.find(params[:id])
+  
+      respond_to do |format|
+        if @dimension.update_attributes(params[:dimension])
+          format.html { redirect_to user_dimension_path(current_user, @dimension), notice: 'Se ha guardado el evento correctamente.' }
+          format.json { head :ok }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @event.errors, status: :unprocessable_entity }
+        end
+      end
+    rescue ActiveRecord::RecordNotFound      
+      respond_to do |format|
+        format.html { redirect_to @custom_root_path }
+        format.json { render json: Dimension.new, status: :unprocessable_entity } 
+      end
+    end      
+  end
+  
   # POST users/1/dimensions
   def create
     @facts = Fact.order(:id)
@@ -35,12 +71,39 @@ class DimensionsController < ApplicationController
   
   # GET users/1/dimensions/1
   def show
-    @dimension = Dimension.find(params[:id])
-    
-    respond_to do |format|
-      format.html { render "show" }
-      format.json { render json: @dimension }
-    end
+    begin
+      @dimension = Dimension.find(params[:id])      
+      @measurements = @dimension.measurements
+      @measurements_count = @measurements.count
+      
+      respond_to do |format|
+        format.html { render "show" }
+        format.json { render json: @dimension } 
+      end           
+    rescue ActiveRecord::RecordNotFound      
+      respond_to do |format|
+        format.html { redirect_to @custom_root_path }
+        format.json { render json: Dimension.new, status: :unprocessable_entity } 
+      end
+    end 
   end
+  
+  # DELETE users/1/dimensions/1
+  def destroy
+    begin
+      @dimension = Dimension.find(params[:id])  
+      @dimension.destroy  
+  
+      respond_to do |format|  
+        format.html { redirect_to @custom_root_path }  
+        format.js   { render :nothing => true }  
+      end 
+    rescue ActiveRecord::RecordNotFound      
+      respond_to do |format|
+        format.html { redirect_to @custom_root_path }
+        format.json { render json: Dimension.new, status: :unprocessable_entity } 
+      end
+    end  
+  end 
   
 end

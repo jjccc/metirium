@@ -75,6 +75,8 @@ class DimensionsController < ApplicationController
       @dimension = Dimension.find(params[:id])      
       @measurements = @dimension.measurements
       @measurements_count = @measurements.count
+      @heatmap = Heatmap.new(@measurements) if @dimension.is_spot?
+      @highchart = Highchart.new(@measurements) if @dimension.is_quantified?
       
       gon.user_id = current_user.id
       gon.dimension_id = @dimension.id  

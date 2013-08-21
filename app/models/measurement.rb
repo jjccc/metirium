@@ -6,6 +6,6 @@ class Measurement < ActiveRecord::Base
   validates_numericality_of :amount, :message => "La cantidad debe ser un número.", :if => :is_quantified_dimension?
   
   def is_quantified_dimension?
-    self.dimension.fact_id == 2
+    self.dimension.is_quantified?
   end
 end

@@ -1,0 +1,47 @@
+$(function () { 
+  $('#chart').highcharts({
+    chart: {
+      type: 'spline'
+    },
+    title: {
+      text: null
+    },
+    xAxis: {
+      type: 'datetime',
+      dateTimeLabelFormats: { 
+        month: '%e/%m',
+        year: '%Y'
+      },
+      labels: {
+        formatter: function() {                  
+          return Highcharts.dateFormat('%e/%m/%Y', this.value);
+        }
+      }
+    },
+    yAxis: {
+      title: {
+        text: null
+      },
+      min: <%= highchart.min %>            
+    },
+    legend: {
+      enabled: false
+    },
+    tooltip: {
+      formatter: function() {
+        return '<b>'+ this.series.name +'</b><br/>'+ Highcharts.dateFormat('%e/%m/%Y', this.x) +': '+ this.y;
+      }
+    },
+    credits: {
+      enabled: false
+    },
+    series: [{
+      name: '<%= dimension.name.html_safe %>',
+      data: [
+        <% highchart.data.each do |d| %>
+          [Date.UTC(<%= d.created_at.year %>, <%= d.created_at.month - 1 %>, <%= d.created_at.day %>), <%= d.amount %>],
+        <% end %>
+      ]
+    }]
+  });
+});

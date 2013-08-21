@@ -21,7 +21,7 @@ cal.init({
     domainDynamicDimension: false,  
     subDomainTextFormat: "%d",
     range: 6,     
-    data: <%= Heatmap.new(dimension, measurements).prepare_data.to_json.html_safe %>,
+    data: <%= heatmap.data.to_json.html_safe %>,
     dataType: "json",
     highlight: "now",
     domainLabelFormat: "%m/%Y",

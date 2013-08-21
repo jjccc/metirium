@@ -77,10 +77,12 @@
   <% end %>
 </div>  
 
-<% if @dimension.fact_id == 1 %>
+<% if @dimension.is_spot? %>
   <% content_for :script do%>
-    <%= render :partial => "spot_chart.js",  :locals => { :dimension => @dimension, :measurements => @measurements } %>
+    <%= render :partial => "spot_chart.js",  :locals => { :dimension => @dimension, :measurements => @measurements, :heatmap => @heatmap } %>
   <% end %>
 <% else %>
-  <%= javascript_include_tag "dimensions/quantified_chart" %>
+  <% content_for :script do%>
+    <%= render :partial => "quantified_chart.js",  :locals => { :dimension => @dimension, :measurements => @measurements, :highchart => @highchart } %>
+  <% end %>
 <% end %>

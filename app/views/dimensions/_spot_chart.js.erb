@@ -1,0 +1,33 @@
+var cal = new CalHeatMap();
+cal.init({
+    itemSelector: "#chart",
+    itemName: ["medición", "mediciones"],
+    subDomainTitleFormat: {
+      empty: "El {date} no se realizaron mediciones",
+      filled: "El {date} se realizaron {count} {name}"
+    },   
+    legendTitleFormat: {
+      lower: "No se han realizado mediciones.",        
+      upper: "Se han realizado mediciones."
+    }, 
+    start: new Date(<%= dimension.created_at.to_i * 1000 %>),
+    displayLegend: false,      
+    legend: [0,1],
+    domain: "month",
+    subDomain: "x_day",
+    cellSize: 20,
+    cellPadding: 5,
+    domainGutter: 20,
+    domainDynamicDimension: false,  
+    subDomainTextFormat: "%d",
+    range: 6,     
+    data: <%= Heatmap.new(dimension, measurements).prepare_data.to_json.html_safe %>,
+    dataType: "json",
+    highlight: "now",
+    domainLabelFormat: "%m/%Y",
+    subDomainDateFormat:  function(date) {
+      var format = d3.time.format("%d/%m/%Y");
+      return format(date); 
+    }
+  }
+);

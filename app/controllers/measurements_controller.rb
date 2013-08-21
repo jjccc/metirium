@@ -46,6 +46,6 @@ class MeasurementsController < ApplicationController
         format.json { render json: @measurement.errors, status: :unprocessable_entity }
       end
     end
-  end
+  end 
   
 end

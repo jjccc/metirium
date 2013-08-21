@@ -76,6 +76,9 @@ class DimensionsController < ApplicationController
       @measurements = @dimension.measurements
       @measurements_count = @measurements.count
       
+      gon.user_id = current_user.id
+      gon.dimension_id = @dimension.id  
+      
       respond_to do |format|
         format.html { render "show" }
         format.json { render json: @dimension } 

@@ -9,6 +9,7 @@
 //= require mustache
 //= require js-routes
 //= require highcharts
+//= require d3.v3.min
 
 $(document).ready(function(){
   

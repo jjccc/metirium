@@ -16,7 +16,8 @@ class MeasurementsController < ApplicationController
   def new
     @measurement = Measurement.new    
     @dimensions = current_user.dimensions.order("created_at desc").limit(5)
-    @return_path = @custom_root_path     
+    @return_path = @custom_root_path   
+    @measurement.is_created_from_dashboard = !params[:dimension_id].present?  
     gon.is_step2 = params[:dimension_id].present?     
     gon.user_id = current_user.id
     if params[:dimension_id].present?
@@ -27,13 +28,14 @@ class MeasurementsController < ApplicationController
   
   # POST users/1/dimensions/1/measurements
   def create
-    @measurement = Measurement.new(params[:measurement])
-    @measurement.dimension_id = params[:dimension_id]
-    @dimensions = current_user.dimensions
+    @measurement = Measurement.new(params[:measurement])    
+    @measurement.dimension_id = params[:dimension_id].to_i
+    @dimensions = current_user.dimensions    
+    return_path = (@measurement.is_created_from_dashboard == "true") ? @custom_root_path : user_dimension_path(current_user, @measurement.dimension_id)
 
     respond_to do |format|
       if @measurement.save
-        format.html { redirect_to @custom_root_path, notice: "OK" }
+        format.html { redirect_to return_path, notice: "OK" }
         format.json { render json: @measurement, status: :created, location: new_user_measurement_url(current_user) }
       else 
         # Establecemos las variables javascript necesarias para saltar al paso 2 del formulario si es necesario

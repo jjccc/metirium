@@ -49,6 +49,7 @@
     </div> 
     
     <%= form_for(@measurement, :url => create_user_measurement_path(current_user), :html => { :class => "form-horizontal"}) do |f| %>
+      <%= f.hidden_field :is_created_from_dashboard %>
       <div id="amount_block" class="form-group <%= h has_error_class(@measurement.errors, :amount) %>">
         <div class="col-lg-3">
           <%= f.label :amount, "Cantidad", :for => "measurement_amount", :class => "control-label" %>

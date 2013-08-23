@@ -14,7 +14,7 @@ class DimensionsController < ApplicationController
   # GET users/1/dimensions/new
   def new
     @facts = Fact.order(:id)
-    @dimension = current_user.dimensions.build    
+    @dimension = current_user.dimensions.build       
   end
   
   # GET /users/1/dimensions/1/edit
@@ -62,7 +62,7 @@ class DimensionsController < ApplicationController
       if @dimension.save
         format.html { redirect_to @custom_root_path, notice: "OK" }
         format.json { render json: @dimension, status: :created, location: new_user_dimension_url(current_user) }
-      else        
+      else              
         format.html { render "new" }
         format.json { render json: @dimension.errors, status: :unprocessable_entity }
       end

@@ -8,9 +8,9 @@
     <%= render :partial => "shared/control_error_text", :locals => { :errors => dimension.errors, :symbol => :name } %>          
   </div>
 </div>
-<div class="form-group">
+<div class="form-group  <%= h has_error_class(dimension.errors, :fact_id) %>">
   <div class="col-lg-3">
-    <%= f.label :fact_id, "Tipo de variable", :for => "user_fact_id", :class => "control-label" %>
+    <%= f.label :fact_id, "Tipo de variable", :for => "dimension_fact_id", :class => "control-label" %>
   </div>
   <div class="col-lg-9">
     <div id="dimension_fact_id" class="btn-group" data-toggle="buttons">
@@ -19,6 +19,7 @@
           <%= f.radio_button(:fact_id, fact.id ) %><%= fact.name %>
         </label>
       <% end %>
+      <%= render :partial => "shared/control_error_text", :locals => { :errors => dimension.errors, :symbol => :fact_id } %>
     </div>
   </div>
 </div>              

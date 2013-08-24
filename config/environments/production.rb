@@ -43,7 +43,9 @@ Metirium::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += [ "leads/new.js", "dimensions/dimensions.js", "measurements/measurements.js", "users/login.js" ]
+  config.assets.precompile += [ "leads/new.js", "dimensions/dimensions.js", "measurements/measurements.js", 
+                                "users/login.js", "cal-heatmap.min.js",  "jquery-ui-1.10.3.custom.min.js",
+                                "cal-heatmap.css" ]
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false

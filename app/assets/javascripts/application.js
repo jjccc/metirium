@@ -10,6 +10,7 @@
 //= require js-routes
 //= require highcharts
 //= require d3.v3.min
+//= require cal-heatmap.min
 
 $(document).ready(function(){
   

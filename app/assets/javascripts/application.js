@@ -5,10 +5,12 @@
 // the compiled file.
 //
 //= require jquery
+//= require jquery-ui-1.10.3.custom.min
 //= require mustache
 //= require js-routes
 //= require highcharts
 //= require d3.v3.min
+//= require cal-heatmap.min
 
 $(document).ready(function(){
   

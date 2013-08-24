@@ -4,7 +4,10 @@ class DimensionsController < ApplicationController
   # GET /users/1/dimensions
   def index   
     #@dimensions = current_user.dimensions.order("updated_at desc").page(params[:page]).per(5)
-    @dimensions = current_user.dimensions.where("name ilike ?", "%#{params[:term]}%").order(:name)  
+    #POSTGRES
+    #@dimensions = current_user.dimensions.where('name ilike ?', "%#{params[:term]}%").order(:name)
+    #MYSQL
+    @dimensions = current_user.dimensions.where('name collate UTF8_GENERAL_CI like ?', "%#{params[:term]}%").order(:name)
     respond_to do |format|
       format.js
       format.json { render :json => @dimensions.map{ |x| {:id => x.id, :label => x.name, :value => x.name} }.as_json }

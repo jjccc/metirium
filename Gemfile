@@ -1,15 +1,11 @@
 source 'http://rubygems.org'
 
 gem "rails", "3.1.0"
+gem "mysql2"
 
-group :production do
-  #gem "mysql2"
+group :production do  
   #gem "execjs" 
   #gem "therubyracer" 
-end
-
-group :development do
-  gem "pg"  
 end
 
 gem "rake", "0.8.7"

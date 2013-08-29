@@ -4,9 +4,6 @@ class DimensionsController < ApplicationController
   # GET /users/1/dimensions
   def index   
     #@dimensions = current_user.dimensions.order("updated_at desc").page(params[:page]).per(5)
-    #POSTGRES
-    #@dimensions = current_user.dimensions.where('name ilike ?', "%#{params[:term]}%").order(:name)
-    #MYSQL
     @dimensions = current_user.dimensions.where('name collate LATIN1_GENERAL_CI like ?', "%#{params[:term]}%").order(:name)
     respond_to do |format|
       format.js

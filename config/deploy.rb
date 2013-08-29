@@ -4,8 +4,8 @@ set :default_stage, "staging"
 
 
 set :application, 'metirium'
-role :app, 'metirium.com'
-role :web, 'metirium.com'
+role :app, 'metirium'
+role :web, 'www.metirium.com'
 
 # The following configuration *optional*
 set :scm, "git"

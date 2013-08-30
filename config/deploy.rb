@@ -9,9 +9,11 @@ set :application, 'metirium'
 default_run_options[:pty] = true
 ssh_options[:port] = 333
 set :scm, "git"
+set :scm_passphrase, ""
 set :repository, "git@github.com:jjccc/metirium.git"
 set :branch, "master"
 set :user, "metirium"
+
 
 server "metirium.com", :app, :web, :db, :primary => true
 set :deploy_to, "ruby/metirium"

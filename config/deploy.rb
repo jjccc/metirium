@@ -2,14 +2,12 @@ require "bundler/capistrano"
 set :bundle_without,  [:development, :test]
 
 set :application, 'metirium'
-#role :app, 'metirium'
-#role :web, 'metirium'
+
 
 # The following configuration *optional*
 default_run_options[:pty] = true
 ssh_options[:port] = 333
 set :scm, "git"
-set :scm_passphrase, ""
 set :repository, "git@github.com:jjccc/metirium.git"
 set :branch, "master"
 set :user, "metirium"
@@ -25,18 +23,10 @@ directory_configuration = %w(db config system)
 # Setup Symlinks that should be created after each deployment
 symlink_configuration = [
     %w(config/database.yml config/database.yml),
-    %w(db/production.sqlite3 db/production.sqlite3),
     %w(system public/system)
 ]
 
 
-namespace :deploy do
-  task :restart, :roles => :web do
-    run "touch #{ current_path }/tmp/restart.txt"
-  end
-end
-
-after "deploy", "deploy:restart"
 
 
 
@@ -102,6 +92,11 @@ namespace :deploy do
       run "ln -nfs #{File.join(shared_path, config[0])} #{File.join(release_path, config[1])}"
     end
   end
+  
+  desc "Show feedback message"
+  task :message do
+    puts "\n\n=== He acabado de subir los archivos ===\n\n"
+  end
 
   # Manual Tasks
 
@@ -129,7 +124,10 @@ namespace :deploy do
       end
       system "rsync -vr --exclude='.DS_Store' config/database.yml #{user}@#{remote_host}:#{shared_path}/config/"
     end
-
+    
+    task :create_release_dir, :except => {:no_release => true} do
+      run "mkdir -p #{fetch :releases_path}"
+    end
   end
 
   
@@ -159,15 +157,16 @@ namespace :deploy do
     directory_configuration.each do |directory|
       run "mkdir -p #{shared_path}/#{directory}"
     end
-    system "cap deploy:db:sync_yaml"
+    #system "cap deploy:db:sync_yaml"
   end
 
 end
 
 # Callbacks
-after 'deploy:setup', 'deploy:setup_shared_path'
-after 'deploy:finalize_update', 'deploy:db:migrate'
-#after 'deploy:finalize_update', 'deploy:passenger_restart'
+#after 'deploy:setup', 'deploy:setup_shared_path'
+#after 'deploy:finalize_update', 'deploy:db:migrate'
+#after "deploy", "deploy:restart"
+after "deploy:update", "deploy:message"
 
 
 

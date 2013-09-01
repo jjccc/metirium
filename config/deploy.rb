@@ -14,7 +14,7 @@ set :user, "metirium"
 
 
 server "metirium.com", :app, :web, :db, :primary => true
-set :deploy_to, "ruby/metirium"
+set :deploy_to, "$HOME/ruby/metirium"
 set :use_sudo, false
 
 # Setup Shared Folders that should be created inside the shared_path

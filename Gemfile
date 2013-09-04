@@ -8,7 +8,7 @@ group :production do
   gem "therubyracer" 
 end
 
-gem "rake", "0.8.7"
+gem "rake"  #, "0.8.7"
 gem "ValidateEmail", "~> 1.0.0"
 gem "gon"
 gem "mustache", "~> 0.99.4"
@@ -16,6 +16,7 @@ gem "devise"
 gem "kaminari"
 gem "bootstrap-kaminari-views"
 gem "js-routes", "0.7.5"
+gem "multi_json"
 
 
 # Gems used only for assets and not required

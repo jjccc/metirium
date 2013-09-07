@@ -8,10 +8,11 @@ class LeadsController < ApplicationController
   end
 
   # POST /leads
+  # POST /leads.json
   def create
     @lead = Lead.new(params[:lead])
 
-    respond_to do |format|
+    respond_to do |format|      
       if @lead.save
         begin
           LeadMailer.welcome_mail(@lead).deliver
@@ -20,10 +21,12 @@ class LeadsController < ApplicationController
         
         format.html { redirect_to root_path, notice: "OK" }
         format.json { render json: @lead, status: :created, location: new_lead_url }
-      else
+        format.js
+      else        
         format.html { render "new" }
         format.json { render json: @lead.errors, status: :unprocessable_entity }
-      end
+        format.js
+      end      
     end
   end
   

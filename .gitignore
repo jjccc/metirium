@@ -7,3 +7,4 @@ tmp/
 *.pyc
 *.pyo
 Copia de Gemfile.lock
+Gemfile.lock

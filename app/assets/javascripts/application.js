@@ -5,6 +5,7 @@
 // the compiled file.
 //
 //= require jquery
+//= require jquery_ujs
 //= require jquery-ui-1.10.3.custom.min
 //= require bootstrap.min
 //= require mustache
@@ -14,7 +15,7 @@
 //= require cal-heatmap.min
 
 $(document).ready(function(){
-  
+
   // Diálogo modal de contacto
   $("#contact").click(function(){
     $("#contact-dlg").modal(); 

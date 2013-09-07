@@ -1,5 +1,6 @@
 require "bundler/capistrano"
 set :bundle_without,  [:development, :test]
+set :bundle_cmd, 'source $HOME/.bash_profile && bundle'
 
 set :application, 'metirium'
 

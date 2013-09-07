@@ -139,10 +139,11 @@ DEPENDENCIES
   jquery-rails
   js-routes (= 0.7.5)
   kaminari
+  multi_json
   mustache (~> 0.99.4)
   mysql2
   rails (= 3.1.0)
-  rake (= 0.8.7)
+  rake
   sass-rails (~> 3.1.0)
   turn
   uglifier

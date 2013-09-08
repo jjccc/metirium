@@ -98,8 +98,9 @@
                     data-via="metirium" 
                     data-lang="es" 
                     data-size="large" 
-                    data-count="none"                   
-                    data-text="<%= h tweet_content(@dimension) %>">Twittear</a>
+                    data-count="none"
+                    data-url="<%= dimension_url(@dimension) %>"
+                    data-text="<%= @dimension.name %>">Twittear</a>
           </div> 
         </div>
       </div>

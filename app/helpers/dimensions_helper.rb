@@ -22,8 +22,5 @@ module DimensionsHelper
   def privacity_button_text(is_public)
     is_public ? "Hacer privada" : "Hacer pública"
   end
-  
-  def tweet_content(dimension)
-    "#{dimension.name} #{dimension_url(dimension)}"
-  end
+
 end 

@@ -8,3 +8,5 @@ tmp/
 *.pyo
 Copia de Gemfile.lock
 Gemfile.lock
+Gemfile.lock
+local_Gemfile.lock

@@ -1,0 +1,6 @@
+<% if @dimension.errors.count == 0 %>
+  $("#privacity_button_container").html('<%= escape_javascript(render :partial => "privacity_button", :locals => { :dimension => @dimension } ) %>');
+  $("#privacity_summary").html('<%= escape_javascript(render :partial => "privacity_summary", :locals => { :dimension => @dimension } ) %>');
+<% else %>
+  alert("No se ha podido cambiar la privacidad de la variable.");
+<% end %>

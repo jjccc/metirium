@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130818135948) do
+ActiveRecord::Schema.define(:version => 20130908144654) do
 
   create_table "dimensions", :force => true do |t|
-    t.string   "name",       :limit => 250, :null => false
+    t.string   "name",       :limit => 250,                    :null => false
     t.integer  "fact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id",                   :null => false
+    t.integer  "user_id",                                      :null => false
+    t.boolean  "is_public",                 :default => false
   end
 
   add_index "dimensions", ["user_id"], :name => "index_dimensions_on_user_id"

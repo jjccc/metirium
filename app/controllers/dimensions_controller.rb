@@ -1,5 +1,5 @@
 class DimensionsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:show]
   
   # GET /users/1/dimensions
   def index   
@@ -35,14 +35,23 @@ class DimensionsController < ApplicationController
     begin
       @facts = Fact.order(:id)
       @dimension = Dimension.find(params[:id])
+      
+      if params[:is_public].present?
+        @dimension.is_public = params[:is_public]
+        result = @dimension.save
+      else
+        result = @dimension.update_attributes(params[:dimension])
+      end
   
       respond_to do |format|
-        if @dimension.update_attributes(params[:dimension])
+        if result
           format.html { redirect_to user_dimension_path(current_user, @dimension), notice: 'Se ha guardado el evento correctamente.' }
           format.json { head :ok }
+          format.js
         else
           format.html { render action: "edit" }
           format.json { render json: @event.errors, status: :unprocessable_entity }
+          format.js
         end
       end
     rescue ActiveRecord::RecordNotFound      
@@ -70,21 +79,29 @@ class DimensionsController < ApplicationController
   end
   
   # GET users/1/dimensions/1
+  # GET dimensions/1
   def show
     begin
-      @dimension = Dimension.find(params[:id])      
-      @measurements = @dimension.measurements
-      @measurements_count = @measurements.count
-      @heatmap = Heatmap.new(@measurements) if @dimension.is_spot?
-      @highchart = Highchart.new(@measurements) if @dimension.is_quantified?
-      
-      gon.user_id = current_user.id
-      gon.dimension_id = @dimension.id  
-      
-      respond_to do |format|
-        format.html { render "show" }
-        format.json { render json: @dimension } 
-      end           
+      @dimension = Dimension.find(params[:id])         
+      if @dimension.is_public || authenticate_user!             
+        @measurements = @dimension.measurements
+        @measurements_count = @measurements.count
+        @heatmap = Heatmap.new(@measurements) if @dimension.is_spot?
+        @highchart = Highchart.new(@measurements) if @dimension.is_quantified?
+        
+        gon.user_id = params[:user_id].present? ? current_user.id : nil
+        gon.dimension_id = @dimension.id  
+        
+        respond_to do |format|
+          format.html { render "show" }
+          format.json { render json: @dimension } 
+        end
+      else
+        respond_to do |format|
+          format.html { redirect_to @custom_root_path }
+          format.json { render json: Dimension.new, status: :unprocessable_entity } 
+        end 
+      end         
     rescue ActiveRecord::RecordNotFound      
       respond_to do |format|
         format.html { redirect_to @custom_root_path }

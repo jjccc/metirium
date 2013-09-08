@@ -1,0 +1,6 @@
+<%= link_to privacity_button_text(dimension.is_public),
+            user_dimension_url(current_user, :is_public => !dimension.is_public), 
+            :remote => true,
+            :method => :put,
+            :id => "privacity_button",
+            :class => "btn btn-block btn-lg btn-custom" %> 

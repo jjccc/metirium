@@ -15,4 +15,11 @@ module DimensionsHelper
     fact_class
   end
   
+  def privacity(is_public)
+    is_public ? "Pública" : "Personal"
+  end
+  
+  def privacity_button_text(is_public)
+    is_public ? "Hacer privada" : "Hacer pública"
+  end
 end 

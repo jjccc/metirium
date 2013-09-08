@@ -41,7 +41,7 @@
                 <div id="privacity_button_container">
                   <%= render :partial => "privacity_button", :locals => { :dimension => @dimension } %>
                 </div>
-              </td>
+              </td>             
               <td colspan="4">
               </td>
             </tr>            
@@ -89,8 +89,24 @@
         </div>
       </div>
     </div>
+    
+    <% if @dimension.is_public %>
+      <div id="share_section" class="row">
+        <div class="mpanel">        
+          <div class="row info">
+            <a href="https://twitter.com/share" class="twitter-share-button" 
+                    data-via="metirium" 
+                    data-lang="es" 
+                    data-size="large" 
+                    data-count="none"                   
+                    data-text="<%= h tweet_content(@dimension) %>">Twittear</a>
+          </div> 
+        </div>
+      </div>
+    <% end %>
   <% end %>
-</div>  
+</div> 
+
 
 <% if @dimension.is_spot? %>
   <% content_for :script do%>

@@ -36,15 +36,17 @@
                 <%= link_to "Volver", @custom_root_path, :class => "btn btn-lg btn-danger" %>    
               </td>
             </tr>
-            <tr>
-              <td class="col-3">
-                <div id="privacity_button_container">
-                  <%= render :partial => "privacity_button", :locals => { :dimension => @dimension } %>
-                </div>
-              </td>             
-              <td colspan="4">
-              </td>
-            </tr>            
+            <% if @measurements_count > 0 %>
+              <tr>
+                <td class="col-3">
+                  <div id="privacity_button_container">
+                    <%= render :partial => "privacity_button", :locals => { :dimension => @dimension } %>
+                  </div>
+                </td>             
+                <td colspan="4">
+                </td>
+              </tr>
+            <% end %>            
           </table>         
         </div>
       </div>
@@ -90,16 +92,14 @@
       </div>
     </div>
     
-    <% if @dimension.is_public %>
-      <div id="share_section" class="row">
-        <div class="mpanel">        
-          <div class="row info">
-            <%= link_to( image_tag("social/twitter.png", :id => "twitter_logo") , "#", :remote => true, :id => "twitter_share" ) %>
-            <%= link_to( image_tag("social/facebook.png", :id => "facebook_logo") , "#", :remote => true, :id => "facebook_share" ) %>            
-          </div> 
-        </div>
+    <div id="share_section" class="row <%= @dimension.is_public ? "" : "hidden" %>">
+      <div class="mpanel">        
+        <div class="row info">
+          <%= link_to( image_tag("social/twitter.png", :id => "twitter_logo") , "#", :remote => true, :id => "twitter_share" ) %>
+          <%= link_to( image_tag("social/facebook.png", :id => "facebook_logo") , "#", :remote => true, :id => "facebook_share" ) %>            
+        </div> 
       </div>
-    <% end %>
+    </div>
   <% end %>
 </div> 
 

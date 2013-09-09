@@ -2,9 +2,9 @@
   $("#privacity_button_container").html('<%= escape_javascript(render :partial => "privacity_button", :locals => { :dimension => @dimension } ) %>');
   $("#privacity_summary").html('<%= escape_javascript(render :partial => "privacity_summary", :locals => { :dimension => @dimension } ) %>');
   <% if @dimension.is_public %>
-    $("#share_section").show();
+    $("#share_section").removeClass("hidden");
   <% else %>
-    $("#share_section").hide();
+    $("#share_section").addClass("hidden");
   <% end %>
 <% else %>
   alert("No se ha podido cambiar la privacidad de la variable.");

@@ -1,5 +1,20 @@
 $(document).ready(function(){
+  $("#twitter_share").click(function(){
+    return social_dialog('https://twitter.com/intent/tweet?original_referer=' + encodeURIComponent(gon.url) + '&text=' + encodeURIComponent(gon.tweet) + '&tw_p=tweetbutton&url=' + encodeURIComponent(gon.url) + '&via=metirium', 'twitter-share-dialog');
+  });
+  $("#facebook_share").click(function(){
+    return social_dialog('https://www.facebook.com/sharer/sharer.php?u='+ encodeURIComponent(gon.url), 'facebook-share-dialog');
+  });
   $("#privacity_button").popover( { trigger: 'hover', content: 'Si una variable es pública, será visible para todo el mundo. Si es privada, sólo será visible por el usuario que la ha creado. Si deseas publicar en Twitter, Facebook o enviar por correo la variable debe ser pública.', html: false, placement: "bottom" });
+  $("#twitter_logo").popover( { trigger: 'hover', content: 'Publicar en Twitter.', html: false, placement: "bottom" });
+  $("#facebook_logo").popover( { trigger: 'hover', content: 'Publicar en Facebook.', html: false, placement: "bottom" });
 });
 
-//!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+function social_dialog(url, id){
+  var w = 626;
+  var h = 436;
+  var left = (screen.width/2)-(w/2);
+  var top = (screen.height/2)-(h/2);
+  window.open(url, id, 'width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+  return false;
+}

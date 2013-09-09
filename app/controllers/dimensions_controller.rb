@@ -90,7 +90,9 @@ class DimensionsController < ApplicationController
         @highchart = Highchart.new(@measurements) if @dimension.is_quantified?
         
         gon.user_id = params[:user_id].present? ? current_user.id : nil
-        gon.dimension_id = @dimension.id  
+        gon.dimension_id = @dimension.id 
+        gon.url = dimension_url(@dimension)
+        gon.tweet = @dimension.name
         
         respond_to do |format|
           format.html { render "show" }

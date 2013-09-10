@@ -29,7 +29,10 @@
               </td>
               <td class="col-3">
                 <% unless @measurements.blank? %>
-                  <a href="javascript: alert('No desarrollado aún');" class="btn btn-block btn-lg btn-custom">Eliminar mediciones</a>              
+                  <%= link_to "Eliminar mediciones", destroy_all_measurements_path(current_user, @dimension), 
+                            :confirm => "Se van a eliminar todas las mediciones que pudiera tener. ¿Quieres continuar?", 
+                            :method => :delete,                                                      
+                            :class => "btn btn-block btn-lg btn-custom" %>              
                 <% end %>
               </td>
               <td class="col-2">

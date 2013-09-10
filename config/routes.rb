@@ -6,6 +6,7 @@ Metirium::Application.routes.draw do
   match "users/:user_id/measurements/new", as: "new_user_measurement", to: "measurements#new", via: [:get]
   match "users/:user_id/measurements", as: "create_user_measurement", to: "measurements#create", via: [:post]
   match "dimensions/:id", as: "dimension", to: "dimensions#show", via: [:get]
+  match "users/:user_id/dimensions/:id/measurements/destroy", as: "destroy_all_measurements", to: "dimensions#destroy_measurements", via: [:delete]
   resources :users, :only => [:show] do
     resources :dashboards, :only => [:index]
     resources :dimensions do

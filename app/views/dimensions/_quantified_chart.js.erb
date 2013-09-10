@@ -53,7 +53,7 @@ $(function () {
     tooltip: {
       useHTML: true,
       formatter: function() {
-        s = '<b>' + this.series.name + '</b><br/>' + Highcharts.dateFormat('%e/%m/%Y %H:%M:%S', this.x) + '<br/><div class="tooltip-chart">' + this.y + '</div>';
+        s = '<b>' + this.series.name + '</b><br/>' + Highcharts.dateFormat('%d/%m/%Y %H:%M:%S', this.x) + '<br/><div class="tooltip-chart">' + this.y + '</div>';
         if (this.point.comment !== null){
           s += '<br><p class="tooltip-comment">' + this.point.comment + '</p>';  
         }
@@ -71,13 +71,13 @@ $(function () {
       data: [
         <% highchart.data.each do |d| %>
           {
-            x: Date.UTC(<%= d.created_at.year %>, <%= d.created_at.month-1 %>, <%= d.created_at.day %>, <%= d.created_at.hour %>, <%= d.created_at.min %>, <%= d.created_at.sec %>),
+            x: Date.UTC(<%= d.measured_at.year %>, <%= d.measured_at.month-1 %>, <%= d.measured_at.day %>, <%= d.measured_at.hour %>, <%= d.measured_at.min %>, <%= d.measured_at.sec %>),
             y: <%= d.amount %>,
             comment: <%= d.comment.blank? ? "null" : "'" + d.comment + "'" %>
           },          
         <% end %>
         ],
-      pointStart: Date.UTC(<%= dimension.created_at.year %>, <%= dimension.created_at.month-1 %>, <%= dimension.created_at.day %>),
+      pointStart: Date.UTC(<%= highchart.start_at.year %>, <%= highchart.start_at.month-1 %>, <%= highchart.start_at.day %>),
       pointInterval: 24 * 1000 * 3600
     }]
   });

@@ -1,11 +1,15 @@
 class Highchart
   
   def initialize(measurements)
-    @measurements = measurements.sort { |a, b| a.created_at <=> b.created_at }
+    @measurements = measurements.sort { |a, b| a.measured_at <=> b.measured_at }
   end
   
   def data
     @measurements
+  end
+  
+  def start_at
+    @measurements.map(&:measured_at).min
   end
   
   def min

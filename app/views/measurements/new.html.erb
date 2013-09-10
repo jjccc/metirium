@@ -42,9 +42,9 @@
   <div id="step2" class="jumbotron col-lg-10 col-lg-offset-1">
     <div class="row">
       <h2 id="measurement_title"></h2>
-      <h5 id="spot_help_text" class="text-muted">Esta variable es puntual, por lo que no necesitas introducir más datos. El comentario no es obligatorio. Al pulsar el botón "Medir" se grabará una medición con la hora actual.</h5>
-      <h5 id="quantified_help_text" class="text-muted">Esta variable es cuantificada, por lo que necesitas introducir la cantidad registrada. Al pulsar el botón "Medir" se grabará una medición con la cantidad especificada y la hora actual.</h5>
-      <h5 id="periodic_help_text" class="text-muted">Esta variable es periódica, por lo que necesitas introducir cada cuanto quieres que se mida. Al pulsar el botón "Medir" se grabará una medición con la hora actual.</h5>
+      <h5 id="spot_help_text" class="text-muted">Esta variable es puntual, por lo que no necesitas introducir más datos. El comentario no es obligatorio. Al pulsar el botón "Medir" se grabará una medición en la fecha establecida.</h5>
+      <h5 id="quantified_help_text" class="text-muted">Esta variable es cuantificada, por lo que necesitas introducir la cantidad registrada. Al pulsar el botón "Medir" se grabará una medición con la cantidad especificada y la fecha establecida.</h5>
+      <h5 id="periodic_help_text" class="text-muted">Esta variable es periódica, por lo que necesitas introducir cada cuanto quieres que se mida. Al pulsar el botón "Medir" se grabará una medición con la fecha establecida.</h5>
     </div> 
     
     <%= form_for(@measurement, :url => create_user_measurement_path(current_user), :html => { :class => "form-horizontal"}) do |f| %>
@@ -56,6 +56,15 @@
         <div class="col-lg-3">
           <%= f.text_field :amount, :autofocus => true, :class => "form-control input-lg", :maxlength => 15, :placeholder => "ej.: 25,5" %>
           <%= render :partial => "shared/control_error_text", :locals => { :errors => @measurement.errors, :symbol => :amount } %>          
+        </div>
+      </div>
+      <div id="datetime_block" class="form-group <%= h has_error_class(@measurement.errors, :string_date) %>">
+        <div class="col-lg-3">
+          <%= f.label :string_date, "Fecha", :for => "measurement_string_date", :class => "control-label" %>
+        </div>
+        <div class="col-lg-3">
+          <%= f.text_field :string_date, :class => "form-control input-lg", :maxlength => 17, :placeholder => "ej.: 10/09/13 09:00:00", :value => Time.now.strftime("%d/%m/%y %H:%M:%S") %>
+          <%= render :partial => "shared/control_error_text", :locals => { :errors => @measurement.errors, :symbol => :string_date } %>          
         </div>
       </div>
       <div class="form-group <%= h has_error_class(@measurement.errors, :comment) %>">

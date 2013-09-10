@@ -7,7 +7,7 @@ class Heatmap
   
   def data
     data = {}
-    @measurements.find_each{ |m| data[m.created_at.to_i.to_s] = 1 }
+    @measurements.find_each{ |m| data[m.measured_at.to_i.to_s] = 1 }
     data
   end
   

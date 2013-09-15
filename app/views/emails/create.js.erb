@@ -1,0 +1,15 @@
+<% if @email.errors.any? %>
+  <% if @email.errors.keys.any?{ |x| x == :addresses } %>
+    $("#addresses-group").addClass("has-error");
+    $("#addresses-error").html('<%= @email.errors[@email.errors.keys.select{ |x| x == :addresses }.first] * "<br>" %>').removeClass("hidden");
+  <% end %>
+  <% if @email.errors.keys.any?{ |x| x == :subject } %>
+    $("#subject-group").addClass("has-error");
+    $("#subject-error").html('<%= @email.errors[@email.errors.keys.select{ |x| x == :subject }.first] * "<br>" %>').removeClass("hidden");
+  <% end %>
+  <% if @email.errors.keys.any?{ |x| x == :deliver } %>
+    $("#deliver-error").html('<%= @email.errors[@email.errors.keys.select{ |x| x == :deliver }.first] * "<br>" %>').removeClass("hidden");
+  <% end %>
+<% else %>
+  $("#popup-dialog").modal("hide");
+<% end %>

@@ -12,10 +12,11 @@ Metirium::Application.routes.draw do
     resources :dimensions do
       resources :measurements
     end
+    resources :emails, :only => [:new, :create]
   end
 
   resources :leads, :only => [:new, :create, :destroy]
-  match "leads/:digest/unsuscribe", to: "leads#destroy", via: [:get]      
-  
+  match "leads/:digest/unsuscribe", to: "leads#destroy", via: [:get]  
+          
   root :to => 'leads#new'
 end

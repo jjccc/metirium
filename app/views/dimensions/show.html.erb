@@ -99,7 +99,8 @@
       <div class="mpanel">        
         <div class="row info">
           <%= link_to( image_tag("social/twitter.png", :id => "twitter_logo") , "#", :remote => true, :id => "twitter_share" ) %>
-          <%= link_to( image_tag("social/facebook.png", :id => "facebook_logo") , "#", :remote => true, :id => "facebook_share" ) %>            
+          <%= link_to( image_tag("social/facebook.png", :id => "facebook_logo") , "#", :remote => true, :id => "facebook_share" ) %>
+          <%= link_to( image_tag("social/email.png", :id => "email_logo") , "#", :remote => true, :id => "email_share" ) %>            
         </div> 
       </div>
     </div>
@@ -116,3 +117,5 @@
     <%= render :partial => "quantified_chart.js",  :locals => { :dimension => @dimension, :measurements => @measurements, :highchart => @highchart } %>
   <% end %>
 <% end %>
+
+<%= render :partial => "shared/popup" %>

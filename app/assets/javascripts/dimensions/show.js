@@ -17,8 +17,9 @@ $(document).ready(function(){
     $("#popup-dialog").modal("show");
   });
   $("#privacity_button").popover( { trigger: 'hover', content: 'Si una variable es pública, será visible para todo el mundo. Si es privada, sólo será visible por el usuario que la ha creado. Si deseas publicar en Twitter, Facebook o enviar por correo la variable debe ser pública.', html: false, placement: "bottom" });
-  $("#twitter_logo").popover( { trigger: 'hover', content: 'Publicar en Twitter.', html: false, placement: "bottom" });
-  $("#facebook_logo").popover( { trigger: 'hover', content: 'Publicar en Facebook.', html: false, placement: "bottom" });
+  $("#twitter_logo").popover( { trigger: 'hover', content: 'Publicar en Twitter', html: false, placement: "bottom" });
+  $("#facebook_logo").popover( { trigger: 'hover', content: 'Publicar en Facebook', html: false, placement: "bottom" });
+  $("#email_logo").popover( { trigger: 'hover', content: 'Enviar por correo electrónico', html: false, placement: "bottom" });
   
 });
 

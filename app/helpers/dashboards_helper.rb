@@ -21,7 +21,7 @@ module DashboardsHelper
     if e.class == Dimension
       "Se crea la variable <a href='#{event_url_for(e)}'>#{e.name}</a>.".html_safe
     else
-      "Se realiza una <a href='#{event_url_for(e)}'>medición</a> de la variable <a href='#{event_url_for(e.dimension)}'>#{e.dimension.name}</a>.".html_safe
+      "Se realiza una medición de la variable <a href='#{event_url_for(e.dimension)}'>#{e.dimension.name}</a>.".html_safe
     end
   end
   

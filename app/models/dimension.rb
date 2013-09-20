@@ -16,4 +16,21 @@ class Dimension < ActiveRecord::Base
     self.fact_id == 2
   end
   
+  def measurements_count
+    m = self.measurements
+    m.blank? ? 0 : m.count
+  end
+  
+  def as_json(options = {})
+    {
+      id: self.id,
+      name: self.name,
+      created_at: self.created_at.strftime("%d/%m/%Y"),
+      fact: self.fact.name,
+      measurements: measurements_count,
+      privacity: self.is_public ? "Pública" : "Privada",
+      url: options[:url]
+    }
+  end
+  
 end

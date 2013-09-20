@@ -2,12 +2,19 @@ class DimensionsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   
   # GET /users/1/dimensions
-  def index   
-    #@dimensions = current_user.dimensions.order("updated_at desc").page(params[:page]).per(5)
-    @dimensions = current_user.dimensions.where('name collate LATIN1_GENERAL_CI like ?', "%#{params[:term]}%").order(:name)
-    respond_to do |format|
+  def index
+    if params[:term].present?
+      # Búsqueda predictiva de variables
+      @dimensions = current_user.dimensions.where('name collate LATIN1_GENERAL_CI like ?', "%#{params[:term]}%").order(:name)
+    else
+      # Gestión de variables
+      @dimensions = current_user.dimensions.order("updated_at desc").page(params[:page]).per(1)  
+    end       
+    
+    respond_to do |format|      
       format.js
       format.json { render :json => @dimensions.map{ |x| {:id => x.id, :label => x.name, :value => x.name} }.as_json }
+      format.html
     end
   end
   

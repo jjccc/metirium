@@ -4,8 +4,8 @@ gem "rails", "3.1.0"
 gem "mysql2"
 
 group :production do  
-  gem "execjs" 
-  gem "therubyracer" 
+  #gem "execjs" 
+  #gem "therubyracer" 
 end
 
 gem "rake"  #, "0.8.7"

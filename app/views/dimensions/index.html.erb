@@ -1,3 +1,5 @@
+<%= javascript_include_tag "dimensions/index" %>
+
 <div class="container">  
   <div class="row">
     <div class="mpanel">      
@@ -9,11 +11,12 @@
             <th class="col-lg-1">Tipo</th>
             <th class="col-lg-1">Mediciones</th>
             <th class="col-lg-1">Privacidad</th>
-            <th></th>
+            <th></th>            
           </thead>
           <tbody id="dimensions">
             <% @dimensions.each do |d| %>
-              <%= render "dimension", :mustache => d.as_json(:url => user_dimension_path(current_user, d)) %>
+              <%= render "dimension", :mustache => d.as_json(:url => user_dimension_path(current_user, d),
+                                                             :edit_url => edit_user_dimension_path(current_user, d)) %>
             <% end %>            
           </tbody>        
         </table>

@@ -124,7 +124,8 @@ hr {
   background-color: #505050;
   border: 1px solid #505050;
   border-radius: 4px;
-  margin: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   color: #DDDD96;
 }
 
@@ -181,3 +182,4 @@ hr {
 .tooltip-comment {
   color: #FF0000;
 }
+

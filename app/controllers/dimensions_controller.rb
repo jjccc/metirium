@@ -89,7 +89,7 @@ class DimensionsController < ApplicationController
   # GET dimensions/1
   def show
     begin
-      @dimension = Dimension.find(params[:id])         
+      @dimension = Dimension.find(params[:id])        
       if @dimension.is_public || authenticate_user!             
         @measurements = @dimension.measurements
         @measurements_count = @measurements.count

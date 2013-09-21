@@ -5,9 +5,8 @@
   <td>{{measurements}}</td>
   <td>{{privacity}}</td>
   <td>
-    <span class="glyphicon glyphicon-remove"></span>
-    <button type="button" class="btn btn-custom">
-      <span class="glyphicon glyphicon-remove"></span> Eliminar
-    </button>
+    <a id="edit-{{id}}" href="{{{edit_url}}}"><span class="glyphicon glyphicon glyphicon-edit"></span></a>   
+    <span>&nbsp;</span>
+    <a id="delete-{{id}}" href="{{{url}}}" data-method="delete" data-remote="true"><span class="glyphicon glyphicon glyphicon-remove-circle"></span></a>
   </td>
 </tr>

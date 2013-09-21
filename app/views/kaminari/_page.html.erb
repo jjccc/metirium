@@ -9,7 +9,7 @@
 -%>
 <li class="<%= 'active disabled' if page.current? %>">
   <% if page.current? %>
-    <span><%= page %></span>
+    <span><%= page %> <span class="sr-only">(current)</span></span>
   <% else %>  
     <%= link_to page, url, {:remote => remote, :rel => page.next? ? 'next' : page.prev? ? 'prev' : nil} %>
   <% end %>

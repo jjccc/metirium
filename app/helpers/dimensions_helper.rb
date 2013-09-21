@@ -15,6 +15,16 @@ module DimensionsHelper
     fact_class
   end
   
+  def active_is_public_class(is_public, dimension)    
+    is_public_class = ""
+    if dimension.new_record?
+      is_public_class = "active" if is_public == false 
+    else
+      is_public_class = "active" if is_public == dimension.is_public
+    end
+    is_public_class
+  end
+  
   def privacity(is_public)
     is_public ? "Pública" : "Personal"
   end

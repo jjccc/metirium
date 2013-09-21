@@ -29,7 +29,8 @@ class Dimension < ActiveRecord::Base
       fact: self.fact.name,
       measurements: measurements_count,
       privacity: self.is_public ? "Pública" : "Privada",
-      url: options[:url]
+      url: options[:url],
+      edit_url: options[:edit_url]
     }
   end
   

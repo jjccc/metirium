@@ -1,5 +1,6 @@
 class DimensionsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
+  before_filter :get_referer
   
   # GET /users/1/dimensions
   def index
@@ -153,6 +154,10 @@ class DimensionsController < ApplicationController
         format.json { render json: @dimension.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def get_referer
+    @return_path = URI(request.referer).path
   end
   
 end

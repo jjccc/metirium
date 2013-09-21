@@ -14,7 +14,7 @@
       <%= render :partial => "form", :locals => { :f => f, 
                                                   :dimension => @dimension, 
                                                   :facts => @facts, 
-                                                  :return_path => user_dimension_path(current_user, @dimension),
+                                                  :return_path => @return_path,
                                                   :submit_text => "Modificar variable" } %>            
     <% end %>
   </div>

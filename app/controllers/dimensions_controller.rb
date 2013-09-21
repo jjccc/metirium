@@ -4,13 +4,15 @@ class DimensionsController < ApplicationController
   
   # GET /users/1/dimensions
   def index
+    @has_paginator = false
     if params[:term].present?
       # Búsqueda predictiva de variables
       @dimensions = current_user.dimensions.where('name collate LATIN1_GENERAL_CI like ?', "%#{params[:term]}%").order(:name)
     else
       # Gestión de variables
-      @dimensions = current_user.dimensions.order("updated_at desc").page(params[:page]).per(1)  
-    end       
+      @dimensions = current_user.dimensions.order("updated_at desc").page(params[:page]).per(4)
+      @has_paginator = @dimensions.total_pages > 1  
+    end            
     
     respond_to do |format|      
       format.js
@@ -39,7 +41,7 @@ class DimensionsController < ApplicationController
   end
   
   # PUT users/1/dimensions/1
-  def update
+  def update    
     begin
       @facts = Fact.order(:id)
       @dimension = Dimension.find(params[:id])
@@ -53,7 +55,7 @@ class DimensionsController < ApplicationController
   
       respond_to do |format|
         if result
-          format.html { redirect_to user_dimension_path(current_user, @dimension), notice: 'Se ha guardado el evento correctamente.' }
+          format.html { redirect_to params[:dimension][:return_path], notice: 'Se ha guardado la variable correctamente.' }
           format.json { head :ok }
           format.js
         else
@@ -77,7 +79,7 @@ class DimensionsController < ApplicationController
 
     respond_to do |format|
       if @dimension.save
-        format.html { redirect_to @custom_root_path, notice: "OK" }
+        format.html { redirect_to params[:dimension][:return_path], notice: "OK" }
         format.json { render json: @dimension, status: :created, location: new_user_dimension_url(current_user) }
       else              
         format.html { render "new" }
@@ -127,8 +129,7 @@ class DimensionsController < ApplicationController
       @dimension.destroy  
   
       respond_to do |format|  
-        format.html { redirect_to @custom_root_path }          
-        format.js
+        format.html { redirect_to @return_path }          
       end 
     rescue ActiveRecord::RecordNotFound      
       respond_to do |format|

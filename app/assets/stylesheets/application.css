@@ -183,3 +183,11 @@ hr {
   color: #FF0000;
 }
 
+.table-paginator {
+  height: 35px;
+  margin-top: 10px;
+}
+
+.button-new {
+  padding-top: 10px;
+}

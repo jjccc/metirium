@@ -2,11 +2,19 @@
 
 <div class="container">  
   <div class="row">
+    <div class="col-lg-9">
+      <h3><b>Gestión de variables</b></h3>
+    </div>    
+    <div class="col-lg-2 pull-right button-new">
+      <a href="<%= new_user_dimension_url(current_user) %>" class="btn btn-lg btn-custom">Nueva variable</a>
+    </div>
+  </div>
+  <div class="row">
     <div class="mpanel">      
       <div class="row info table-responsive">
         <table class="table">
           <thead>
-            <th class="col-lg-4">Variable</th>
+            <th class="col-lg-4"></th>
             <th class="col-lg-1">Creada</th>
             <th class="col-lg-1">Tipo</th>
             <th class="col-lg-1">Mediciones</th>
@@ -17,15 +25,22 @@
             <% @dimensions.each do |d| %>
               <%= render "dimension", :mustache => d.as_json(:url => user_dimension_path(current_user, d),
                                                              :edit_url => edit_user_dimension_path(current_user, d)) %>
-            <% end %>            
-          </tbody>        
+            <% end %>
+          </tbody>    
+          <tfoot>
+            <% if @has_paginator %>
+              <tr>
+                <td colspan="6">
+                  <div id="dimension-paginator" class="table-paginator">
+                    <%= paginate @dimensions, :remote => true %>          
+                  </div>
+                </td>
+              </tr>           
+            <% end %>
+          </tfoot>    
         </table>
       </div>
     </div>
-  </div>
-
-  <div id="dimension-paginator">
-    <%= paginate @dimensions, :remote => true %>          
   </div>
 </div>
 

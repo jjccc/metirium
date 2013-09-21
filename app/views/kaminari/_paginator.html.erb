@@ -7,21 +7,15 @@
     paginator:     the paginator that renders the pagination tags inside
 -%>
 <%= paginator.render do -%>
-  <div class="row">
-    <div class="mpanel">        
-      <div class="row info">
-        <ul class="pagination">
-          <%= first_page_tag unless current_page.first? %>    
-          <% each_page do |page| -%>
-            <% if page.left_outer? || page.right_outer? || page.inside_window? -%>
-              <%= page_tag page %>
-            <% elsif !page.was_truncated? -%>
-              <%= gap_tag %>
-            <% end -%>
-          <% end -%>
-          <%= last_page_tag unless current_page.last? %>
-        </ul>
-      </div> 
-    </div>
-  </div>
+    <ul class="pagination">
+      <%= first_page_tag unless current_page.first? %>    
+      <% each_page do |page| -%>
+        <% if page.left_outer? || page.right_outer? || page.inside_window? -%>
+          <%= page_tag page %>
+        <% elsif !page.was_truncated? -%>
+          <%= gap_tag %>
+        <% end -%>
+      <% end -%>
+      <%= last_page_tag unless current_page.last? %>
+    </ul>
 <% end -%>

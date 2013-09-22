@@ -44,6 +44,12 @@
   </div>
 </div>
 
+<%= render :partial => "shared/popup", :locals => { :popup_title => "Eliminar variable",
+                                                    :popup_body => "¿Realmente quieres eliminar la variable y todas sus mediciones?",
+                                                    :popup_ok => "Eliminar",
+                                                    :popup_cancel => "Cancelar",
+                                                    :popup_id => "delete-dimension-dialog" } %>
+
 <script type="text/html" id="dimension_template">
   <%= render "dimension" %>
 </script>

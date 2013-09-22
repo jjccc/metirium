@@ -19,10 +19,7 @@
                 <a href="<%= edit_user_dimension_url(current_user) %>" class="btn btn-block btn-lg btn-custom">Editar</a>
               </td>
               <td class="col-3">
-                <%= link_to "Eliminar", user_dimension_path(current_user, @dimension), 
-                            :confirm => "Se va a eliminar la variable y todas las mediciones que pudiera tener. ¿Quieres continuar?", 
-                            :method => :delete,                           
-                            :class => "btn btn-block btn-lg btn-custom" %>
+                <%= link_to "Eliminar", "#", :id => "delete-dimension-button", :remote => true, :class => "btn btn-block btn-lg btn-custom" %>                            
               </td>
               <td class="col-3">
                 <a href="<%= new_user_dimension_measurement_url(current_user, @dimension) %>" class="btn btn-block btn-lg btn-custom">Realizar medición</a>              
@@ -100,9 +97,7 @@
         <div class="row info">
           <%= link_to( image_tag("social/twitter.png", :id => "twitter_logo") , "#", :remote => true, :id => "twitter_share" ) %>
           <%= link_to( image_tag("social/facebook.png", :id => "facebook_logo") , "#", :remote => true, :id => "facebook_share" ) %>
-          <% unless current_user.nil? %>
-            <%= link_to( image_tag("social/email.png", :id => "email_logo") , "#", :remote => true, :id => "email_share" ) %>
-          <% end %>            
+          <%= link_to_unless( current_user.nil?, image_tag("social/email.png", :id => "email_logo"), "#", :remote => true, :id => "email_share") %>            
         </div> 
       </div>
     </div>
@@ -120,4 +115,14 @@
   <% end %>
 <% end %>
 
-<%= render :partial => "shared/popup" %>
+<%= render :partial => "shared/popup", :locals => { :popup_title => "Enviar correo electrónico",
+                                                    :popup_body => "Cargando...",
+                                                    :popup_ok => "Enviar",
+                                                    :popup_cancel => "Cancelar",
+                                                    :popup_id => "send-email-dialog" } %>
+                                                    
+<%= render :partial => "shared/popup", :locals => { :popup_title => "Eliminar variable",
+                                                    :popup_body => "¿Realmente quieres eliminar la variable y todas sus mediciones?",
+                                                    :popup_ok => "Eliminar",
+                                                    :popup_cancel => "Cancelar",
+                                                    :popup_id => "delete-dimension-dialog" } %>                                                    

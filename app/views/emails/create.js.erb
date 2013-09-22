@@ -11,5 +11,5 @@
     $("#deliver-error").html('<%= @email.errors[@email.errors.keys.select{ |x| x == :deliver }.first] * "<br>" %>').removeClass("hidden");
   <% end %>
 <% else %>
-  $("#popup-dialog").modal("hide");
+  $("#send-email-dialog").modal("hide");
 <% end %>

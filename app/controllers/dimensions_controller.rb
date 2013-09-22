@@ -14,6 +14,8 @@ class DimensionsController < ApplicationController
       @has_paginator = @dimensions.total_pages > 1  
     end            
     
+    gon.user_id = current_user.id
+    
     respond_to do |format|      
       format.js
       format.json { render :json => @dimensions.map{ |x| {:id => x.id, :label => x.name, :value => x.name} }.as_json }
@@ -129,7 +131,8 @@ class DimensionsController < ApplicationController
       @dimension.destroy  
   
       respond_to do |format|  
-        format.html { redirect_to @return_path }          
+        format.html { redirect_to @return_path, :method => "get" }
+        format.json { render json: {}, status: :ok }          
       end 
     rescue ActiveRecord::RecordNotFound      
       respond_to do |format|

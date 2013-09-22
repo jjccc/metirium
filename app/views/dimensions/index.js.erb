@@ -5,4 +5,5 @@ $("#dimensions").html("");
 $('#dimension-paginator').html('<%= escape_javascript(paginate(@dimensions, 
                                                                :params => {:controller => 'dimensions', :action => 'index'}, 
                                                                :remote => true).to_s) %>');  
-set_icons_tooltips();                                                                                                                     
+set_icons_tooltips();  
+set_delete_confirmations();                                                                                                                    

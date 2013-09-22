@@ -6,21 +6,32 @@ $(document).ready(function(){
     return social_dialog('https://www.facebook.com/sharer/sharer.php?u='+ encodeURIComponent(gon.url), 'facebook-share-dialog');
   });
   $("#email_share").click(function(){
-    $("#popup-dialog").modal({remote: Routes.new_user_email_path(gon.user_id, {d: gon.dimension_id}), target: "#popup_body"});
-    $("#popup-ok-button").click(function(){
+    $("#send-email-dialog").modal({remote: Routes.new_user_email_path(gon.user_id, {d: gon.dimension_id})});
+    $("#send-email-dialog-ok-button").click(function(){
       $("#addresses-group").removeClass("has-error");
       $("#subject-group").removeClass("has-error");
       $("#addresses-error").html("").addClass("hidden");
       $("#subject-error").html("").addClass("hidden");
       $("#new_email").submit();
     });
-    $("#popup-dialog").modal("show");
+    $("#send-email-dialog").modal("show");
   });
   $("#privacity_button").popover( { trigger: 'hover', content: 'Si una variable es pública, será visible para todo el mundo. Si es privada, sólo será visible por el usuario que la ha creado. Si deseas publicar en Twitter, Facebook o enviar por correo la variable debe ser pública.', html: false, placement: "bottom" });
   $("#twitter_logo").popover( { trigger: 'hover', content: 'Publicar en Twitter', html: false, placement: "bottom" });
   $("#facebook_logo").popover( { trigger: 'hover', content: 'Publicar en Facebook', html: false, placement: "bottom" });
   $("#email_logo").popover( { trigger: 'hover', content: 'Enviar por correo electrónico', html: false, placement: "bottom" });
-  
+  $("#delete-dimension-button").on("click", function(){      
+    $("#delete-dimension-dialog-ok-button").on("click", function(){
+      $.ajax({
+        type: "delete",
+        url: Routes.user_dimension_path(gon.user_id, gon.dimension_id),
+        dataType: "json"
+      }).success(function(data, textStatus, jqXHR){
+                   document.location.href = Routes.user_dashboards_path(gon.user_id);
+                 });
+    });
+    $("#delete-dimension-dialog").modal("show");      
+  });
 });
 
 function social_dialog(url, id){

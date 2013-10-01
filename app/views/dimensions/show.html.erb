@@ -104,14 +104,15 @@
   <% end %>
 </div> 
 
-
-<% if @dimension.is_spot? %>
-  <% content_for :script do%>
-    <%= render :partial => "spot_chart.js",  :locals => { :dimension => @dimension, :measurements => @measurements, :heatmap => @heatmap } %>
-  <% end %>
-<% else %>
-  <% content_for :script do%>
-    <%= render :partial => "quantified_chart.js",  :locals => { :dimension => @dimension, :measurements => @measurements, :highchart => @highchart } %>
+<% unless @measurements.blank? %>
+  <% if @dimension.is_spot? %>
+    <% content_for :script do%>
+      <%= render :partial => "spot_chart.js",  :locals => { :dimension => @dimension, :measurements => @measurements, :heatmap => @heatmap } %>
+    <% end %>
+  <% else %>
+    <% content_for :script do%>
+      <%= render :partial => "quantified_chart.js",  :locals => { :dimension => @dimension, :measurements => @measurements, :highchart => @highchart } %>
+    <% end %>
   <% end %>
 <% end %>
 
@@ -119,7 +120,7 @@
                                                     :popup_body => "Cargando...",
                                                     :popup_ok => "Enviar",
                                                     :popup_cancel => "Cancelar",
-                                                    :popup_id => "send-email-dialog" } %>
+                                                    :popup_id => "send-mail-dialog" } %>
                                                     
 <%= render :partial => "shared/popup", :locals => { :popup_title => "Eliminar variable",
                                                     :popup_body => "¿Realmente quieres eliminar la variable y todas sus mediciones?",

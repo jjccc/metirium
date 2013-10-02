@@ -44,7 +44,10 @@
     <%= yield :script %>
   </script>
   
-  <%= render "layouts/contact" %>
+  <%= render :partial => "shared/popup_ajax", :locals => { :popup_title => "Contacta con nosotros",
+                                                           :popup_ok => "Enviar",
+                                                           :popup_cancel => "Cancelar",
+                                                           :popup_id => "contact-dialog" } %>
   <%= render "layouts/twitter" %>
 </body>
 </html>

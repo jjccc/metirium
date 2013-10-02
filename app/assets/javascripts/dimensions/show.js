@@ -6,15 +6,8 @@ $(document).ready(function(){
     return social_dialog('https://www.facebook.com/sharer/sharer.php?u='+ encodeURIComponent(gon.url), 'facebook-share-dialog');
   });
   $("#email_share").click(function(){
-    $("#send-email-dialog").modal({remote: Routes.new_user_email_path(gon.user_id, {d: gon.dimension_id})});
-    $("#send-email-dialog-ok-button").click(function(){
-      $("#addresses-group").removeClass("has-error");
-      $("#subject-group").removeClass("has-error");
-      $("#addresses-error").html("").addClass("hidden");
-      $("#subject-error").html("").addClass("hidden");
-      $("#new_email").submit();
-    });
-    $("#send-email-dialog").modal("show");
+    $("#send-mail-dialog").modal({remote: Routes.new_user_email_path(gon.user_id, {d: gon.dimension_id})});
+    $("#send-mail-dialog").modal("show");    
   });
   $("#privacity_button").popover( { trigger: 'hover', content: 'Si una variable es pública, será visible para todo el mundo. Si es privada, sólo será visible por el usuario que la ha creado. Si deseas publicar en Twitter, Facebook o enviar por correo la variable debe ser pública.', html: false, placement: "bottom" });
   $("#twitter_logo").popover( { trigger: 'hover', content: 'Publicar en Twitter', html: false, placement: "bottom" });

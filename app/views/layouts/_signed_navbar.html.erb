@@ -1,10 +1,12 @@
+<%= javascript_include_tag "contact" %>
+
 <div class="collapse navbar-collapse navbar-ex1-collapse">
   <ul class="metirium nav navbar-nav">
     <li class="active"><a href="<%= @custom_root_path %>">Inicio</a></li>
     <li><a href="<%= user_dimensions_path(current_user) %>">Variables</a></li>
     <li><a href="">Mediciones</a></li>
     <li><a href="">Gráficos</a></li>
-    <li><a id="contact" href="#">Contacto</a></li>
+    <li><%= link_to "Contacto", "#", :remote => true, :id => "contact" %></li>
     <li><a href="#">Ayuda</a></li>    
   </ul>
   <ul class="metirium nav navbar-nav pull-right">

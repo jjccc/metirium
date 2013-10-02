@@ -1,32 +1,35 @@
-<%= javascript_include_tag "emails/new" %>
+<%= javascript_include_tag "emails/contact_mail" %>
 
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      <h4 class="modal-title">Enviar correo electrónico</h4>
+      <h4 class="modal-title">Contacta con nosotros</h4>
     </div>
-    <div class="modal-body">        
-      <%= form_for(@email, :url => user_emails_path(current_user), :remote => true, :id => "new_email", :html => { :class => "form-horizontal"}) do |f| %>
+    <div class="modal-body">
+      <p>Si quieres enviarnos una sugerencia, exponernos una duda, o comentarnos cualquier cosa que se te ocurra, puedes hacerlo a través del siguiente formulario</p><br>        
+      <%= form_for(@email, :url => unknown_contact_path, :remote => true, :html => { :class => "form-horizontal", :id => "contact_email" }) do |f| %>
         <%= f.hidden_field :user_id, :value => @email.user_id %>
         <%= f.hidden_field :is_contact, :value => @is_contact %>
 
-        <div id="addresses-group" class="form-group">
+        <div id="contact-addresses-group" class="form-group <%= "hidden" unless current_user.nil? %>">
           <div class="col-lg-3">
-            <%= f.label :addresses, "Destinatarios", :for => "email_addresses", :class => "control-label " %>
+            <%= f.label :addresses, "Correo electrónico", :for => "email_addresses", :class => "control-label " %>
           </div>
           <div class="col-lg-9">
-            <%= f.text_field :addresses, :autofocus => true, :class => "form-control input-lg", :maxlength => 250, :placeholder => "Escribe las direcciones separadas por comas" %>
-            <h5 id="addresses-error" class="text-danger hidden"></h5>
+            <%= f.text_field :addresses, :autofocus => true, :class => "form-control input-lg", :maxlength => 250, 
+                             :placeholder => "Escribe tu dirección de correo",
+                             :value => current_user.nil? ? nil : current_user.email %>
+            <h5 id="contact-addresses-error" class="text-danger hidden"></h5>
           </div>
         </div>        
-        <div id="subject-group" class="form-group">
+        <div id="contact-subject-group" class="form-group">
           <div class="col-lg-3">
             <%= f.label :subject, "Asunto", :for => "email_subject", :class => "control-label" %>
           </div>
           <div class="col-lg-9">
             <%= f.text_field :subject, :class => "form-control input-lg", :maxlength => 250 %>
-            <h5 id="subject-error" class="text-danger hidden"></h5>
+            <h5 id="contact-subject-error" class="text-danger hidden"></h5>
           </div>
         </div>
         <div class="form-group">
@@ -45,13 +48,13 @@
             <%= f.check_box :want_copy %>             
           </div>    
         </div>
-        <div id="deliver-error" class="form-group col-lg-12 alert alert-danger hidden">      
+        <div id="contact-deliver-error" class="form-group col-lg-12 alert alert-danger hidden">      
         </div>
       
       <% end %>
     </div>
     <div class="modal-footer">
-      <button id="send-mail-ok-button" type="button" class="btn btn-custom">Enviar</button>
+      <button id="contact-ok-button" type="button" class="btn btn-custom">Enviar</button>
       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
     </div>
   </div>

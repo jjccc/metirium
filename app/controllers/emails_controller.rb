@@ -1,12 +1,14 @@
 # encoding: utf-8
 class EmailsController < ApplicationController
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
   layout false
   
   # GET users/1/emails/new
+  # GET contact
   def new
     @email = Email.new    
-    @email.user_id = params[:user_id]
+    @email.user_id = params[:user_id] if params[:user_id].present?
+    @is_contact = !params[:user_id].present? || params[:contact].present?
     if params[:d].present?
       begin
         dimension = Dimension.find(params[:d].to_i)
@@ -15,6 +17,12 @@ class EmailsController < ApplicationController
       rescue ActiveRecord::RecordNotFound           
       end
     end
+    
+    respond_to do |format|
+      format.html { render @is_contact ? "contact" : "new" }
+      format.js
+    end
+    
   end
   
   # POST users/1/emails.json

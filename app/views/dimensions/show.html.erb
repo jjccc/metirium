@@ -116,11 +116,11 @@
   <% end %>
 <% end %>
 
-<%= render :partial => "shared/popup", :locals => { :popup_title => "Enviar correo electrónico",
-                                                    :popup_body => "Cargando...",
-                                                    :popup_ok => "Enviar",
-                                                    :popup_cancel => "Cancelar",
-                                                    :popup_id => "send-mail-dialog" } %>
+<%= render :partial => "shared/popup_ajax", :locals => { :popup_title => "Enviar correo electrónico",
+                                                         :popup_body => "Cargando...",
+                                                         :popup_ok => "Enviar",
+                                                         :popup_cancel => "Cancelar",
+                                                         :popup_id => "send-mail-dialog" } %>
                                                     
 <%= render :partial => "shared/popup", :locals => { :popup_title => "Eliminar variable",
                                                     :popup_body => "¿Realmente quieres eliminar la variable y todas sus mediciones?",
